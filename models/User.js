@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const officeSchema = require("./Office");
+const caseSchema = require("./Case");
 const addressSchema = require("./Address");
 
 const bcrypt = require("bcrypt");
@@ -7,28 +8,37 @@ const bcrypt = require("bcrypt");
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-  },
-  email: {
-    type: String,
+    required: true,
   },
   password: {
     type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    unique: true,
+    required: true,
   },
   cellphone: {
     type: Number,
+    required: true,
   },
   role: {
     type: String,
+    required: true,
   },
   isAdmin: {
     type: Boolean,
+    required: true,
   },
   address: { type: addressSchema },
 
   location: {
     type: [Number],
+    required: true,
   },
   preferred_office: { type: officeSchema },
+  cases: { type: caseSchema },
 });
 
 userSchema.pre("save", async function (next) {

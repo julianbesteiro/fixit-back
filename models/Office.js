@@ -5,13 +5,16 @@ const addressSchema = require("./Address");
 const officeSchema = new mongoose.Schema({
   name: {
     type: String,
+    required: true,
   },
   address: { type: addressSchema },
   location: {
     type: [Number],
+    required: true,
   },
   map: {
-    type: Buffer,
+    type: String,
+    required: true,
   },
 });
 
