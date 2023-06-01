@@ -23,7 +23,6 @@ const officeSchema = new mongoose.Schema({
       required: true,
     },
   },
-
   location: {
     type: [Number],
     required: true,
@@ -34,5 +33,4 @@ const officeSchema = new mongoose.Schema({
   },
 });
 
-const Office = mongoose.model("Office", officeSchema);
-module.exports = officeSchema;
+module.exports = mongoose.model("Office", officeSchema);

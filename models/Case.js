@@ -1,47 +1,61 @@
 const mongoose = require("mongoose");
-const userSchema = require("./User");
-const officeSchema = require("./Office");
-const equipmentSchema = require("./Equipment");
-const statusSchema = require("./Status");
 
 const caseSchema = new mongoose.Schema({
-  user: { type: mongoose.SchemaTypes.ObjectId, required: true },
+  user: { type: mongoose.SchemaTypes.ObjectId, ref: "User", required: true },
 
-  homeOffice: {
+  home_office: {
     type: Boolean,
     required: true,
   },
 
-  damagedEquipment: { type: equipmentSchema, required: true },
+  damaged_equipment: {
+    name: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+    location: {
+      type: [Number],
+      required: true,
+    },
+  },
 
-  status: { type: statusSchema, required: true },
+  status: {
+    type: String,
+    enum: ["open", "assigned", "sent", "solved", "closed"],
+    default: "open",
+  },
 
-  owner: { type: mongoose.SchemaTypes.ObjectId, required: true },
+  owner: { type: mongoose.SchemaTypes.ObjectId, ref: "User", required: true },
 
   description: {
     type: String,
     required: true,
+    minlength: 50,
   },
 
-  closestOffice: { type: officeSchema, required: true },
+  closest_office: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: "Office",
+    required: true,
+  },
   startingDate: {
     type: Date,
-    required: true,
+    default: () => Date.now(),
   },
-  solutionDate: {
+  solution_date: {
     type: Date,
-    required: true,
   },
-  closingDate: {
+  closing_date: {
     type: Date,
-    required: true,
   },
   reopenings: {
     type: Number,
-    required: true,
     default: 0,
   },
 });
 
-const Case = mongoose.model("Case", caseSchema);
-module.exports = caseSchema;
+module.exports = mongoose.model("Case", caseSchema);
