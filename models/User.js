@@ -1,7 +1,4 @@
 const mongoose = require("mongoose");
-const officeSchema = require("./Office");
-const caseSchema = require("./Case");
-const addressSchema = require("./Address");
 
 const bcrypt = require("bcrypt");
 
@@ -16,6 +13,7 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
+    match: /^\S+@\S+.\S+$/,
     unique: true,
     required: true,
   },
@@ -27,18 +25,38 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  isAdmin: {
+  is_admin: {
     type: Boolean,
-    required: true,
+    default: false,
   },
-  address: { type: addressSchema },
-
+  address: {
+    street: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    state: {
+      type: String,
+      required: true,
+    },
+    country: {
+      type: String,
+      required: true,
+    },
+  },
   location: {
     type: [Number],
     required: true,
   },
-  preferred_office: { type: officeSchema },
-  cases: { type: caseSchema },
+  preferred_office: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: "Office",
+    required: true,
+  },
+  cases: { type: mongoose.SchemaTypes.ObjectId, ref: "Case" },
 });
 
 userSchema.pre("save", async function (next) {
@@ -55,6 +73,4 @@ userSchema.methods.validatePassword = async function (password) {
   return isValid;
 };
 
-const User = mongoose.model("User", userSchema);
-
-module.exports = User;
+module.exports = mongoose.model("User", userSchema);
