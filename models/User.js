@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const officeSchema = require("./Office");
 const caseSchema = require("./Case");
-const addressSchema = require("./Address");
 
 const bcrypt = require("bcrypt");
 
@@ -31,7 +30,24 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  address: { type: addressSchema },
+  address: {
+    street: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    state: {
+      type: String,
+      required: true,
+    },
+    country: {
+      type: String,
+      required: true,
+    },
+  },
 
   location: {
     type: [Number],

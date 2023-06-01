@@ -1,8 +1,16 @@
 const mongoose = require("mongoose");
 const { User } = require("../models");
-
+const { generateToken } = require("../config/token");
 const signup = async (req, res) => {
   try {
+    const { email } = req.body;
+
+    const existingUser = await User.findOne({ email });
+
+    if (existingUser) {
+      return res.status(409).json({ error: "The user already exists." });
+    }
+
     const newUser = new User(req.body);
 
     await newUser.save();
@@ -21,21 +29,29 @@ const login = async (req, res) => {
     }
 
     const isValid = await user.validatePassword(req.body.password);
-    console.log("isvalid", isValid);
+
     if (!isValid) {
       return res.sendStatus(401);
     }
 
     const { id, email, isAdmin, name } = user;
-    // const token = generateToken({ id, name, isAdmin, email });
-    // res.cookie("token", token);
+
+    const token = generateToken({ id, name, isAdmin, email });
+
+    res.cookie("token", token);
     res.sendStatus(200);
   } catch (err) {
     res.status(404).send(err);
   }
 };
 
+const logout = (req, res) => {
+  res.clearCookie("token");
+  res.sendStatus(204);
+};
+
 module.exports = {
   signup,
   login,
+  logout,
 };
