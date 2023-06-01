@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const addressSchema = require("./Address");
 
 const officeSchema = new mongoose.Schema({
@@ -6,7 +7,7 @@ const officeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  address: addressSchema,
+  address: { type: addressSchema },
   location: {
     type: [Number],
     required: true,
@@ -18,4 +19,4 @@ const officeSchema = new mongoose.Schema({
 });
 
 const Office = mongoose.model("Office", officeSchema);
-module.exports = Office;
+module.exports = officeSchema;

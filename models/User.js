@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
-const addressSchema = require("./Address");
 const officeSchema = require("./Office");
 const caseSchema = require("./Case");
+const addressSchema = require("./Address");
+
+const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -29,15 +31,29 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  address: addressSchema,
+  address: { type: addressSchema },
 
   location: {
     type: [Number],
     required: true,
   },
-  preferred_office: officeSchema,
-  cases: caseSchema,
+  preferred_office: { type: officeSchema },
+  cases: { type: caseSchema },
 });
+
+userSchema.pre("save", async function (next) {
+  if (this.isModified("password")) {
+    const salt = await bcrypt.genSalt(8);
+    this.salt = salt;
+    this.password = await bcrypt.hash(this.password, salt);
+  }
+  next();
+});
+
+userSchema.methods.validatePassword = async function (password) {
+  const isValid = await bcrypt.compare(password, this.password);
+  return isValid;
+};
 
 const User = mongoose.model("User", userSchema);
 
