@@ -5,10 +5,7 @@ const equipmentSchema = require("./Equipment");
 const statusSchema = require("./Status");
 
 const caseSchema = new mongoose.Schema({
-  user: {
-    type: userSchema,
-    required: true,
-  },
+  user: { type: mongoose.SchemaTypes.ObjectId, required: true },
 
   homeOffice: {
     type: Boolean,
@@ -19,10 +16,10 @@ const caseSchema = new mongoose.Schema({
 
   status: { type: statusSchema, required: true },
 
-  owner: { type: userSchema, required: true },
+  owner: { type: mongoose.SchemaTypes.ObjectId, required: true },
 
   description: {
-    type: Text,
+    type: String,
     required: true,
   },
 
@@ -47,4 +44,4 @@ const caseSchema = new mongoose.Schema({
 });
 
 const Case = mongoose.model("Case", caseSchema);
-module.exports = Case;
+module.exports = caseSchema;
