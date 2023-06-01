@@ -29,31 +29,9 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  address: {
-    street: {
-      type: String,
-      required: true,
-    },
-    city: {
-      type: String,
-      required: true,
-    },
-    state: {
-      type: String,
-      required: true,
-    },
-    country: {
-      type: String,
-      required: true,
-    },
-  },
+  address: { type: String, required: true },
   location: {
     type: [Number],
-    required: true,
-  },
-  preferred_office: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: "Office",
     required: true,
   },
   cases: { type: mongoose.SchemaTypes.ObjectId, ref: "Case" },

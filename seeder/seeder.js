@@ -55,13 +55,7 @@ async function seedData() {
         cellphone: 1234,
         role: "backend developer",
         is_admin: false,
-        address: {
-          street: "Carlos M. Della Paolera 1249",
-          city: "Buenos Aires",
-          state: "CABA",
-          country: "Argentina",
-        },
-        preferred_office: "6478eee36c85483ca072a5ad",
+        address: "Carlos M. Della Paolera 1249, Buenos Aires, CABA, Argentina",
       },
       {
         name: "Juan Gonzalez",
@@ -71,13 +65,7 @@ async function seedData() {
         cellphone: 2345,
         role: "gaming developer",
         is_admin: false,
-        address: {
-          street: "Av. Colón 4440",
-          city: "Barrio Alto Alberdi",
-          state: "Cordoba",
-          country: "Argentina",
-        },
-        preferred_office: "6478eee36c85483ca072a5ae",
+        address: "Av. Colón 4440, Barrio Alto Alberdi, Cordoba, Argentina",
       },
       {
         name: "Manuel Rodriguez",
@@ -87,13 +75,8 @@ async function seedData() {
         cellphone: 3456,
         role: "service desk",
         is_admin: true,
-        address: {
-          street: "Dr. Luis María Drago 1413",
-          city: "Bahía Blanca",
-          state: "Buenos Aires",
-          country: "Argentina",
-        },
-        preferred_office: "6478eee36c85483ca072a5af",
+        address:
+          "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
       },
     ];
 
@@ -104,7 +87,8 @@ async function seedData() {
         damaged_equipment: {
           name: "laptop",
           image: "laptop.jpg",
-          location: [1, 2],
+          location:
+            "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
         status: "open",
         owner: "6478f201b4ff5b5937d4a2fd",
@@ -118,7 +102,7 @@ async function seedData() {
         damaged_equipment: {
           name: "mouse",
           image: "mouse.jpg",
-          location: [2, 3],
+          location: "Av. Colón 4440, Barrio Alto Alberdi, Cordoba, Argentina",
         },
         status: "open",
         owner: "6478f201b4ff5b5937d4a2fd",
