@@ -108,7 +108,8 @@ async function seedData() {
         },
         status: "open",
         owner: "6478f201b4ff5b5937d4a2fd",
-        description: "No enciende",
+        description:
+          "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
         closest_office: "6478eee36c85483ca072a5ad",
       },
       {
@@ -121,7 +122,8 @@ async function seedData() {
         },
         status: "open",
         owner: "6478f201b4ff5b5937d4a2fd",
-        description: "No funciona",
+        description:
+          "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
         closest_office: "6478eee36c85483ca072a5ae",
       },
     ];
