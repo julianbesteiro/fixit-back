@@ -49,27 +49,26 @@ async function seedData() {
     const users = [
       {
         name: "Jose Perez",
-
         password: "hola",
         email: "a@a.com",
         cellphone: 1234,
         role: "backend developer",
         is_admin: false,
         address: "Carlos M. Della Paolera 1249, Buenos Aires, CABA, Argentina",
+        location: [1, 2],
       },
       {
         name: "Juan Gonzalez",
-
         password: "hola",
         email: "b@b.com",
         cellphone: 2345,
         role: "gaming developer",
         is_admin: false,
         address: "Av. Colón 4440, Barrio Alto Alberdi, Cordoba, Argentina",
+        location: [2, 3],
       },
       {
         name: "Manuel Rodriguez",
-
         password: "hola",
         email: "c@c.com",
         cellphone: 3456,
@@ -77,6 +76,7 @@ async function seedData() {
         is_admin: true,
         address:
           "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
+        location: [3, 4],
       },
     ];
 

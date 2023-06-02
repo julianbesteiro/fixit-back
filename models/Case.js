@@ -52,9 +52,8 @@ const caseSchema = new mongoose.Schema({
   closing_date: {
     type: Date,
   },
-  reopenings: {
-    type: Number,
-    default: 0,
+  address: {
+    type: String,
   },
 });
 

@@ -25,13 +25,13 @@ const login = async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
-      return res.status(401).json({ error: "The user doesn't exist." });
+      return res.status(203).json({ error: "The user doesn't exist." });
     }
 
     const isValid = await user.validatePassword(req.body.password);
 
     if (!isValid) {
-      return res.status(401).json({ error: "Incorrect password." });
+      return res.status(203).json({ error: "Incorrect password." });
     }
 
     const { id, email, is_admin, name } = user;
@@ -41,7 +41,7 @@ const login = async (req, res) => {
     res.cookie("token", token);
     res.sendStatus(200);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
