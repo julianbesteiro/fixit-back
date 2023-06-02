@@ -12,7 +12,7 @@ const signup = async (req, res) => {
     }
 
     const newUser = new User(req.body);
-
+    console.log("newuser ", newUser);
     await newUser.save();
     res.sendStatus(200);
   } catch (err) {
@@ -25,18 +25,18 @@ const login = async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
-      return res.sendStatus(401);
+      return res.status(401).json({ error: "The user doesn't exist." });
     }
 
     const isValid = await user.validatePassword(req.body.password);
 
     if (!isValid) {
-      return res.sendStatus(401);
+      return res.status(401).json({ error: "Incorrect password." });
     }
 
-    const { id, email, isAdmin, name } = user;
+    const { id, email, is_admin, name } = user;
 
-    const token = generateToken({ id, name, isAdmin, email });
+    const token = generateToken({ id, name, is_admin, email });
 
     res.cookie("token", token);
     res.sendStatus(200);
