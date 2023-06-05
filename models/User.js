@@ -29,6 +29,11 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  image: {
+    type: String,
+    default:
+      "https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg",
+  },
   address: { type: String, required: true },
   location: {
     type: [Number],
