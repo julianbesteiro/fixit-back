@@ -37,11 +37,11 @@ const caseSchema = new mongoose.Schema({
     minlength: 50,
   },
 
-  closest_office: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: "Office",
-    required: true,
-  },
+  // closest_office: {
+  //   type: mongoose.SchemaTypes.ObjectId,
+  //   ref: "Office",
+  //   required: true,
+  // },
   startingDate: {
     type: Date,
     default: () => Date.now(),
