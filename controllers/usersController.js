@@ -25,13 +25,17 @@ const login = async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
-      return res.status(203).json({ error: "The user doesn't exist." });
+      return res
+        .status(203)
+        .json({ error: true, message: "The user doesn't exist." });
     }
 
     const isValid = await user.validatePassword(req.body.password);
 
     if (!isValid) {
-      return res.status(203).json({ error: "Incorrect password." });
+      return res
+        .status(203)
+        .json({ error: true, message: "Incorrect password." });
     }
 
     const { id, email, is_admin, name } = user;
