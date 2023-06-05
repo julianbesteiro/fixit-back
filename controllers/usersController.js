@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { User } = require("../models");
+const { User, Case } = require("../models");
 const { generateToken, validateToken } = require("../config/token");
 const signup = async (req, res) => {
   try {
@@ -12,7 +12,6 @@ const signup = async (req, res) => {
     }
 
     const newUser = new User(req.body);
-    console.log("newuser ", newUser);
     await newUser.save();
     res.sendStatus(200);
   } catch (err) {
@@ -74,6 +73,42 @@ const logout = (req, res) => {
   res.sendStatus(204);
 };
 
+const profileData = async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    const profileData = await User.findById(userId);
+
+    res.status(200).send(profileData);
+  } catch (err) {
+    res.status(404).send(err);
+  }
+};
+
+const casesHistory = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const casesHistory = await Case.where("user").equals(userId);
+
+    res.status(200).send(casesHistory);
+  } catch (err) {
+    res.status(404).send(err);
+  }
+};
+
+const updateUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const updatedUser = req.body;
+
+    await User.updateOne({ _id: userId }, { $set: updatedUser });
+
+    res.status(200).send("User updated");
+  } catch (err) {
+    res.status(404).send(err);
+  }
+};
+
 const secret = (req, res) => {
   console.log("coookies ", req.cookies.token);
 
@@ -87,5 +122,8 @@ module.exports = {
   signup,
   login,
   logout,
+  profileData,
+  casesHistory,
+  updateUser,
   secret,
 };
