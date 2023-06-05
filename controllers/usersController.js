@@ -79,7 +79,7 @@ const profileData = async (req, res) => {
 
     const profileData = await User.findById(userId);
 
-    res.status(200).send(profileData);
+    res.status(200).json(profileData);
   } catch (err) {
     res.status(404).send(err);
   }
@@ -88,9 +88,52 @@ const profileData = async (req, res) => {
 const casesHistory = async (req, res) => {
   try {
     const userId = req.params.id;
-    const casesHistory = await Case.where("user").equals(userId);
 
-    res.status(200).send(casesHistory);
+    const page = req.query.p || 0;
+    const casesPerPage = 2;
+
+    const casesHistory = await Case.where("user")
+      .equals(userId)
+      .sort({ startingDate: 1 })
+      .skip(page * casesPerPage)
+      .limit(casesPerPage);
+
+    res.status(200).json(casesHistory);
+  } catch (err) {
+    res.status(404).send(err);
+  }
+};
+
+const lastCase = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const lastCase = await Case.find({ user: userId, status: "open" })
+      .sort({ startingDate: 1 })
+      .limit(1);
+
+    res.status(200).json(lastCase);
+  } catch (err) {
+    res.status(404).send(err);
+  }
+};
+
+const caseFilterByStatus = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const { status } = req.body;
+    if (status == "pending") {
+      const pendingCases = await Case.find({
+        user: userId,
+        status: { $nin: ["closed"] },
+      }).sort({ startingDate: 1 });
+      res.status(200).json(pendingCases);
+    } else {
+      const pendingCases = await Case.find({
+        user: userId,
+        status: { $in: ["closed"] },
+      }).sort({ startingDate: 1 });
+      res.status(200).json(pendingCases);
+    }
   } catch (err) {
     res.status(404).send(err);
   }
@@ -110,8 +153,6 @@ const updateUser = async (req, res) => {
 };
 
 const secret = (req, res) => {
-  console.log("coookies ", req.cookies.token);
-
   const { payload } = validateToken(req.cookies.token);
   req.user = payload;
   console.log("PAYLOAD >> ", payload);
@@ -126,4 +167,6 @@ module.exports = {
   casesHistory,
   updateUser,
   secret,
+  lastCase,
+  caseFilterByStatus,
 };
