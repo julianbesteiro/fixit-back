@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { User, Case } = require("../models");
-const { generateToken } = require("../config/token");
+const { generateToken, validateToken } = require("../config/token");
 const signup = async (req, res) => {
   try {
     const { email } = req.body;
@@ -37,9 +37,29 @@ const login = async (req, res) => {
         .json({ error: true, message: "Incorrect password." });
     }
 
-    const { id, email, is_admin, name } = user;
+    const {
+      id,
+      name,
+      email,
+      cellphone,
+      address,
+      image,
+      location,
+      role,
+      is_admin,
+    } = user;
 
-    const token = generateToken({ id, name, is_admin, email });
+    const token = generateToken({
+      id,
+      name,
+      email,
+      cellphone,
+      address,
+      image,
+      location,
+      role,
+      is_admin,
+    });
 
     res.cookie("token", token);
     res.sendStatus(200);
@@ -89,6 +109,15 @@ const updateUser = async (req, res) => {
   }
 };
 
+const secret = (req, res) => {
+  console.log("coookies ", req.cookies.token);
+
+  const { payload } = validateToken(req.cookies.token);
+  req.user = payload;
+  console.log("PAYLOAD >> ", payload);
+  res.send(payload);
+};
+
 module.exports = {
   signup,
   login,
@@ -96,4 +125,5 @@ module.exports = {
   profileData,
   casesHistory,
   updateUser,
+  secret,
 };
