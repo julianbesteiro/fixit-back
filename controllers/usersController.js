@@ -90,11 +90,11 @@ const casesHistory = async (req, res) => {
     const userId = req.params.id;
 
     const page = req.query.p || 0;
-    const casesPerPage = 2;
+    const casesPerPage = 10;
 
     const casesHistory = await Case.where("user")
       .equals(userId)
-      .sort({ startingDate: 1 })
+      .sort({ startingDate: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
 
@@ -107,8 +107,8 @@ const casesHistory = async (req, res) => {
 const lastCase = async (req, res) => {
   try {
     const userId = req.params.id;
-    const lastCase = await Case.find({ user: userId, status: "open" })
-      .sort({ startingDate: 1 })
+    const lastCase = await Case.find({ user: userId })
+      .sort({ startingDate: -1 })
       .limit(1);
 
     res.status(200).json(lastCase);
@@ -125,13 +125,13 @@ const caseFilterByStatus = async (req, res) => {
       const pendingCases = await Case.find({
         user: userId,
         status: { $nin: ["closed"] },
-      }).sort({ startingDate: 1 });
+      }).sort({ startingDate: -1 });
       res.status(200).json(pendingCases);
     } else {
       const pendingCases = await Case.find({
         user: userId,
         status: { $in: ["closed"] },
-      }).sort({ startingDate: 1 });
+      }).sort({ startingDate: -1 });
       res.status(200).json(pendingCases);
     }
   } catch (err) {
