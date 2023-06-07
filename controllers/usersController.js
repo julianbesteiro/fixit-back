@@ -62,22 +62,20 @@ const login = async (req, res) => {
     });
 
     res.cookie("token", token);
-    res
-      .status(200)
-      .json({
-        data: {
-          id,
-          name,
-          email,
-          cellphone,
-          address,
-          image,
-          location,
-          role,
-          is_admin,
-        },
-        message: "is logged",
-      });
+    res.status(200).json({
+      data: {
+        id,
+        name,
+        email,
+        cellphone,
+        address,
+        image,
+        location,
+        role,
+        is_admin,
+      },
+      message: "is logged",
+    });
   } catch (err) {
     res.status(500).send(err);
   }
@@ -132,32 +130,24 @@ const lastCase = async (req, res) => {
   }
 };
 
-const caseFilterByStatus = async (req, res) => {
-  try {
-    const { id, status } = req.params;
-    if (status == "pending") {
-      const pendingCases = await Case.find({
-        user: id,
-        status: { $nin: ["closed"] },
-      }).sort({ startingDate: -1 });
-      res.status(200).json(pendingCases);
-    } else {
-      const pendingCases = await Case.find({
-        user: id,
-        status: { $in: ["closed"] },
-      }).sort({ startingDate: -1 });
-      res.status(200).json(pendingCases);
-    }
-  } catch (err) {
-    res.status(404).send(err);
-  }
-};
-
 const secret = (req, res) => {
   const { payload } = validateToken(req.cookies.token);
   req.user = payload;
   console.log("PAYLOAD >> ", payload);
   res.send(payload);
+};
+
+const updateUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const updatedUser = req.body;
+
+    await User.updateOne({ _id: userId }, { $set: updatedUser });
+
+    res.status(200).send("User updated");
+  } catch (err) {
+    res.status(404).send(err);
+  }
 };
 
 module.exports = {
@@ -169,6 +159,4 @@ module.exports = {
   updateUser,
   secret,
   lastCase,
-  caseFilterByStatus,
-  caseFilterByDevice,
 };
