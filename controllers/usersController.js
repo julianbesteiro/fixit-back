@@ -153,27 +153,34 @@ const updateUser = async (req, res) => {
 
 const searchUsers = async (req, res) => {
   try {
-    const { term } = req.query;
+    const { term, isAdmin } = req.query;
 
     if (term !== "undefined") {
-      const users = await User.find({
+      let query = {
         $or: [
           { name: { $regex: term, $options: "i" } },
           { lastname: { $regex: term, $options: "i" } },
           { email: { $regex: term, $options: "i" } },
         ],
-      });
-      if (users.length != 0) {
+      };
+
+      if (isAdmin) {
+        query = { ...query, is_admin: true };
+      }
+
+      const users = await User.find(query);
+
+      if (users.length !== 0) {
         res.json(users);
       } else {
-        res.status(401).send("No user matching");
+        res.status(401).send("No users matching the search ");
       }
     } else {
-      res.status(401).send("No user matching");
+      res.status(401).send("No users matching the search");
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error on user serch");
+    res.status(500).send("Error searching for users");
   }
 };
 
