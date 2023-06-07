@@ -119,34 +119,20 @@ const lastCase = async (req, res) => {
 
 const caseFilterByStatus = async (req, res) => {
   try {
-    const userId = req.params.id;
-    const { status } = req.body;
+    const { id, status } = req.params;
     if (status == "pending") {
       const pendingCases = await Case.find({
-        user: userId,
+        user: id,
         status: { $nin: ["closed"] },
       }).sort({ startingDate: -1 });
       res.status(200).json(pendingCases);
     } else {
       const pendingCases = await Case.find({
-        user: userId,
+        user: id,
         status: { $in: ["closed"] },
       }).sort({ startingDate: -1 });
       res.status(200).json(pendingCases);
     }
-  } catch (err) {
-    res.status(404).send(err);
-  }
-};
-
-const updateUser = async (req, res) => {
-  try {
-    const userId = req.params.id;
-    const updatedUser = req.body;
-
-    await User.updateOne({ _id: userId }, { $set: updatedUser });
-
-    res.status(200).send("User updated");
   } catch (err) {
     res.status(404).send(err);
   }
@@ -169,4 +155,5 @@ module.exports = {
   secret,
   lastCase,
   caseFilterByStatus,
+  caseFilterByDevice,
 };
