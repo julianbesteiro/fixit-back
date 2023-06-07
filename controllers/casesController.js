@@ -41,28 +41,36 @@ const getAll = async (req, res) => {
   }
 };
 
-const userFilter = async (req, res) => {
+const userCases = async (req, res) => {
   try {
-    const userEmail = req.params.email;
-
-    const filteredUser = await User.findOne({ email: userEmail });
-
-    if (!filteredUser) {
-      return res
-        .status(401)
-        .json({ error: "there are no cases in this glober history" });
+    const userID = req.params.id;
+    const userCases = await Case.find({ user: userID });
+    if (userCases.length === 0) {
+      return res.status(401).json({ error: "There are no matching cases." });
     }
-    const filteredCases = await Case.find({ user: filteredUser._id });
 
-    res.status(200).json(filteredCases);
-  } catch (error) {
+    res.status(200).json(userCases);
+  } catch (err) {
+    res.status(404).send(err);
+  }
+};
+const ownerCases = async (req, res) => {
+  try {
+    const ownerID = req.params.id;
+    const ownerCases = await Case.find({ owner: ownerID });
+    if (ownerCases.length === 0) {
+      return res.status(401).json({ error: "There are no matching cases." });
+    }
+
+    res.status(200).json(ownerCases);
+  } catch (err) {
     res.status(404).send(err);
   }
 };
 
 const filterCases = async (req, res) => {
   try {
-    const { status, period, device } = req.query;
+    const { status, period, device, office } = req.query;
 
     const currentDate = new Date();
 
@@ -105,6 +113,7 @@ const filterCases = async (req, res) => {
 
     filteredCases = await Case.find({
       $and: [
+        office ? { closest_office: office } : {},
         filteredUser ? { user: filteredUser._id } : {},
         selectedStatus ? { status: { $in: selectedStatus } } : {},
         startDate ? { startingDate: { $gte: startDate } } : {},
@@ -123,4 +132,11 @@ const filterCases = async (req, res) => {
   }
 };
 
-module.exports = { createCase, getAll, filterCases, userFilter, allDevices };
+module.exports = {
+  createCase,
+  getAll,
+  filterCases,
+  ownerCases,
+  allDevices,
+  userCases,
+};

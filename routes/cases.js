@@ -8,7 +8,8 @@ router.get("/allDevices", casesController.allDevices);
 
 //admin
 router.get("/", validateAdmin, casesController.getAll);
-
+router.get("/user/:id", validateAdmin, casesController.userCases);
+router.get("/owner/:id", validateAdmin, casesController.ownerCases);
 router.get("/filter", validateAdmin, casesController.filterCases);
 
 module.exports = router;
