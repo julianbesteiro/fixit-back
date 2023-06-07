@@ -135,7 +135,7 @@ const filterCases = async (req, res) => {
 const filterCasesGlober = async (req, res) => {
   try {
     const { status, period, device } = req.query;
-
+    const userId = req.params.id;
     const currentDate = new Date();
 
     let startDate;
@@ -177,6 +177,7 @@ const filterCasesGlober = async (req, res) => {
 
     filteredCases = await Case.find({
       $and: [
+        { user: userId },
         filteredUser ? { user: filteredUser._id } : {},
         selectedStatus ? { status: { $in: selectedStatus } } : {},
         startDate ? { startingDate: { $gte: startDate } } : {},

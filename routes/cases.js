@@ -15,6 +15,6 @@ router.put("/update/:id", validateAdmin, casesController.updateCase);
 
 //user
 
-router.get("/filterGlober", casesController.filterCasesGlober);
+router.get("/filterGlober/:id", casesController.filterCasesGlober);
 
 module.exports = router;
