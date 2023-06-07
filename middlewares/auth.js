@@ -10,4 +10,13 @@ function validateUser(req, res, next) {
   }
   res.sendStatus(401);
 }
-module.exports = validateUser;
+function validateAdmin(req, res, next) {
+  const token = req.cookies.token;
+  if (token) {
+    const { payload } = validateToken(token);
+
+    if (payload.is_admin === true) return next();
+  }
+  res.status(401).json("error: you need credentials to access");
+}
+module.exports = { validateUser, validateAdmin };

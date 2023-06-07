@@ -62,7 +62,22 @@ const login = async (req, res) => {
     });
 
     res.cookie("token", token);
-    res.sendStatus(200);
+    res
+      .status(200)
+      .json({
+        data: {
+          id,
+          name,
+          email,
+          cellphone,
+          address,
+          image,
+          location,
+          role,
+          is_admin,
+        },
+        message: "is logged",
+      });
   } catch (err) {
     res.status(500).send(err);
   }
