@@ -52,6 +52,8 @@ const editDevice = async (req, res) => {
   }
 };
 
+//
+
 module.exports = {
   createDevice,
   viewAllDevices,
