@@ -11,4 +11,8 @@ router.get("/", validateAdmin, casesController.getAll);
 
 router.get("/filter", validateAdmin, casesController.filterCases);
 
+//user
+
+router.get("/filterGlober", casesController.filterCasesGlober);
+
 module.exports = router;
