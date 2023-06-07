@@ -177,8 +177,7 @@ const filterCasesGlober = async (req, res) => {
 
     filteredCases = await Case.find({
       $and: [
-        { user: userId },
-        filteredUser ? { user: filteredUser._id } : {},
+        userId ? { user: userId } : {},
         selectedStatus ? { status: { $in: selectedStatus } } : {},
         startDate ? { startingDate: { $gte: startDate } } : {},
 
