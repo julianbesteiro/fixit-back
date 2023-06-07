@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { User, Case } = require("../models");
 const { generateToken, validateToken } = require("../config/token");
+const { getAll } = require("./casesController");
 const signup = async (req, res) => {
   try {
     const { email } = req.body;
@@ -184,6 +185,23 @@ const searchUsers = async (req, res) => {
   }
 };
 
+const getUsers = async (req, res) => {
+  try {
+    const { isAdmin } = req.query;
+    const page = req.query.p || 0;
+    const usersPerPage = 5;
+
+    const allUsers = await User.find(isAdmin ? { is_admin: isAdmin } : {})
+      .sort({ startingDate: -1 })
+      .skip(page * usersPerPage)
+      .limit(usersPerPage);
+
+    res.status(200).json(allUsers);
+  } catch (err) {
+    res.status(404).send(err);
+  }
+};
+
 module.exports = {
   signup,
   login,
@@ -194,4 +212,5 @@ module.exports = {
   secret,
   lastCase,
   searchUsers,
+  getUsers,
 };

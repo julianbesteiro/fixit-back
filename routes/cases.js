@@ -11,6 +11,7 @@ router.get("/", validateAdmin, casesController.getAll);
 router.get("/user/:id", validateAdmin, casesController.userCases);
 router.get("/owner/:id", validateAdmin, casesController.ownerCases);
 router.get("/filter", validateAdmin, casesController.filterCases);
+router.put("/update/:id", validateAdmin, casesController.updateCase);
 
 //user
 

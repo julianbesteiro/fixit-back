@@ -195,6 +195,19 @@ const filterCasesGlober = async (req, res) => {
   }
 };
 
+const updateCase = async (req, res) => {
+  try {
+    const caseId = req.params.id;
+    const updatedCase = req.query;
+
+    await Case.updateOne({ _id: caseId }, { $set: updatedCase });
+
+    res.status(200).send("Case updated");
+  } catch (err) {
+    res.status(404).send(err);
+  }
+};
+
 module.exports = {
   createCase,
   getAll,
@@ -203,4 +216,5 @@ module.exports = {
   filterCasesGlober,
   ownerCases,
   userCases,
+  updateCase,
 };
