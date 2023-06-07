@@ -12,5 +12,6 @@ router.put("/update/:id", usersController.updateUser);
 router.get("/lastCase/:id", usersController.lastCase);
 router.get("/secret", usersController.secret);
 router.get("/search", validateAdmin, usersController.searchUsers);
+router.get("/getUsers", validateAdmin, usersController.getUsers);
 
 module.exports = router;
