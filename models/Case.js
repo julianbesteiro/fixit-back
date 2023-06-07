@@ -10,7 +10,8 @@ const caseSchema = new mongoose.Schema({
 
   damaged_equipment: {
     name: {
-      type: String,
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "Device",
       required: true,
     },
     image: {

@@ -12,4 +12,8 @@ router.get("/user/:id", validateAdmin, casesController.userCases);
 router.get("/owner/:id", validateAdmin, casesController.ownerCases);
 router.get("/filter", validateAdmin, casesController.filterCases);
 
+//user
+
+router.get("/filterGlober", casesController.filterCasesGlober);
+
 module.exports = router;

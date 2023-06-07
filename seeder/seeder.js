@@ -1,7 +1,7 @@
 //ejecutar en la terminal:  node seeder/seeder.js
 
 const mongoose = require("mongoose");
-const { Case, User, Office } = require("../models");
+const { Case, User, Office, Device } = require("../models");
 
 async function seedData() {
   try {
@@ -85,7 +85,7 @@ async function seedData() {
         user: "6478f2400ad7434030dd0d81",
         home_office: true,
         damaged_equipment: {
-          name: "laptop",
+          name: "6480a26a78472943cd22342b",
           image: "laptop.jpg",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
@@ -100,7 +100,7 @@ async function seedData() {
         user: "6478f2400ad7434030dd0d82",
         home_office: true,
         damaged_equipment: {
-          name: "mouse",
+          name: "6480a26a78472943cd22342b",
           image: "mouse.jpg",
           location: "Av. Colón 4440, Barrio Alto Alberdi, Cordoba, Argentina",
         },
@@ -112,9 +112,22 @@ async function seedData() {
       },
     ];
 
+    const devices = [
+      {
+        name: "notebook",
+      },
+      {
+        name: "mouse",
+      },
+      {
+        name: "headset",
+      },
+    ];
+
     await Office.insertMany(offices);
     await User.insertMany(users);
     await Case.insertMany(cases);
+    await Device.insertMany(devices);
 
     console.log("Data seeded successfully");
   } catch (error) {
