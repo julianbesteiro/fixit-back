@@ -75,6 +75,7 @@ const login = async (req, res) => {
         is_admin,
       },
       message: "is logged",
+      error: false,
     });
   } catch (err) {
     res.status(500).send(err);
@@ -133,7 +134,7 @@ const lastCase = async (req, res) => {
 const secret = (req, res) => {
   const { payload } = validateToken(req.cookies.token);
   req.user = payload;
-  console.log("PAYLOAD >> ", payload);
+
   res.send(payload);
 };
 
@@ -150,6 +151,32 @@ const updateUser = async (req, res) => {
   }
 };
 
+const searchUsers = async (req, res) => {
+  try {
+    const { term } = req.query;
+
+    if (term !== "undefined") {
+      const users = await User.find({
+        $or: [
+          { name: { $regex: term, $options: "i" } },
+          { lastname: { $regex: term, $options: "i" } },
+          { email: { $regex: term, $options: "i" } },
+        ],
+      });
+      if (users.length != 0) {
+        res.json(users);
+      } else {
+        res.status(401).send("No user matching");
+      }
+    } else {
+      res.status(401).send("No user matching");
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error on user serch");
+  }
+};
+
 module.exports = {
   signup,
   login,
@@ -159,4 +186,5 @@ module.exports = {
   updateUser,
   secret,
   lastCase,
+  searchUsers,
 };
