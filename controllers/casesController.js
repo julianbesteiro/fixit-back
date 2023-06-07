@@ -13,6 +13,16 @@ const createCase = async (req, res) => {
   }
 };
 
+const allDevices = async (req, res) => {
+  try {
+    const devices = await Case.distinct("damaged_equipment.name", {});
+
+    res.status(200).json(devices);
+  } catch (err) {
+    res.status(404).send(err);
+  }
+};
+
 //admin
 
 const getAll = async (req, res) => {
@@ -30,75 +40,6 @@ const getAll = async (req, res) => {
     res.status(404).send(err);
   }
 };
-
-// const statusFilter = async (req, res) => {
-//   try {
-//     const { status } = req.params.status;
-//     if (status === "pending") {
-//       const pendingCases = await Case.find({
-//         user: userId,
-//         status: { $nin: ["closed"] },
-//       }).sort({ startingDate: -1 });
-//       res.status(200).json(pendingCases);
-//     } else {
-//       const pendingCases = await Case.find({
-//         status: { $in: ["closed"] },
-//       }).sort({ startingDate: -1 });
-//       if (!pendingCases) {
-//         return res.status(401).json("there are no cases to show");
-//       }
-//       res.status(200).json(pendingCases);
-//     }
-//   } catch (err) {
-//     res.status(404).send(err);
-//   }
-// };
-
-// const periodFilter = async (req, res) => {
-//   try {
-//     const { period } = req.params;
-//     console.log("period", period);
-//     const currentDate = new Date();
-
-//     let startDate;
-//     switch (period) {
-//       case "15_days":
-//         startDate = new Date(currentDate.getTime() - 15 * 24 * 60 * 60 * 1000);
-//         break;
-//       case "1_month":
-//         startDate = new Date(currentDate.getTime() - 30 * 24 * 60 * 60 * 1000);
-//         break;
-//       case "6_months":
-//         startDate = new Date(
-//           currentDate.getTime() - 6 * 30 * 24 * 60 * 60 * 1000
-//         );
-//         break;
-//       default:
-//         startDate = null;
-//         break;
-//     }
-
-//     let filteredCases;
-
-//     if (startDate) {
-//       filteredCases = await Case.find({
-//         startingDate: { $gte: startDate },
-//       }).sort({ startingDate: -1 });
-
-//       if (filteredCases.length === 0) {
-//         return res
-//           .status(401)
-//           .json({ error: "There are no cases in this period." });
-//       }
-//     } else {
-//       filteredCases = await Case.find().sort({ startingDate: -1 });
-//     }
-//     console.log("filteredcases> ", filteredCases.length);
-//     res.status(200).json(filteredCases);
-//   } catch (err) {
-//     res.status(404).send(err);
-//   }
-// };
 
 const userFilter = async (req, res) => {
   try {
@@ -182,4 +123,4 @@ const filterCases = async (req, res) => {
   }
 };
 
-module.exports = { createCase, getAll, filterCases, userFilter };
+module.exports = { createCase, getAll, filterCases, userFilter, allDevices };

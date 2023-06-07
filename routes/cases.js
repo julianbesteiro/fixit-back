@@ -4,6 +4,7 @@ const { casesController } = require("../controllers");
 const { validateAdmin } = require("../middlewares/auth");
 
 router.post("/newCase", casesController.createCase);
+router.get("/allDevices", casesController.allDevices);
 
 //admin
 router.get("/", validateAdmin, casesController.getAll);
