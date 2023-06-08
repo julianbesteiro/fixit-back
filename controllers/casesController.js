@@ -208,6 +208,21 @@ const updateCase = async (req, res) => {
   }
 };
 
+const searchIndividualCase = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const data = await Case.findById(id);
+    if (!data) {
+      return res.status(404).json({ message: "The case wasnst founded" });
+    }
+
+    return res.json(data);
+  } catch (error) {
+    return res.status(500).json({ message: "Error in the server" });
+  }
+};
+
 module.exports = {
   createCase,
   getAll,
@@ -217,4 +232,5 @@ module.exports = {
   ownerCases,
   userCases,
   updateCase,
+  searchIndividualCase,
 };
