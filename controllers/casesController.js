@@ -122,7 +122,7 @@ const filterCasesGlober = async (req, res) => {
       if (status === "solved") {
         selectedStatus = ["solved"];
       } else if (status === "pending") {
-        selectedStatus = ["open", "in progress", "solved", "partially solved"];
+        selectedStatus = ["open", "in progress", "partially solved"];
       }
     }
 
@@ -133,11 +133,7 @@ const filterCasesGlober = async (req, res) => {
         userId ? { user: userId } : {},
         selectedStatus ? { status: { $in: selectedStatus } } : {},
         startDate ? { startingDate: { $gte: startDate } } : {},
-        device
-          ? {
-              "damaged_equipment.name": device,
-            }
-          : {},
+        device && device != "all" ? { "damaged_equipment.name": device } : {},
       ],
     })
       .sort({ startingDate: -1 })
