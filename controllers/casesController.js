@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Case, User } = require("../models");
+const { validateCredentials } = require("../middlewares/auth");
 
 const createCase = async (req, res) => {
   try {
@@ -44,7 +45,13 @@ const getAll = async (req, res) => {
 const userCases = async (req, res) => {
   try {
     const userID = req.params.id;
-    const userCases = await Case.find({ user: userID });
+    const page = req.query.p || 0;
+    const casesPerPage = 10;
+
+    const userCases = await Case.find({ user: userID })
+      .sort({ startingDate: -1 })
+      .skip(page * casesPerPage)
+      .limit(casesPerPage);
     if (userCases.length === 0) {
       return res.status(401).json({ error: "There are no matching cases." });
     }
@@ -57,7 +64,13 @@ const userCases = async (req, res) => {
 const ownerCases = async (req, res) => {
   try {
     const ownerID = req.params.id;
-    const ownerCases = await Case.find({ owner: ownerID });
+    const page = req.query.p || 0;
+    const casesPerPage = 10;
+
+    const ownerCases = await Case.find({ owner: ownerID })
+      .sort({ startingDate: -1 })
+      .skip(page * casesPerPage)
+      .limit(casesPerPage);
     if (ownerCases.length === 0) {
       return res.status(401).json({ error: "There are no matching cases." });
     }
@@ -70,8 +83,12 @@ const ownerCases = async (req, res) => {
 
 const filterCasesGlober = async (req, res) => {
   try {
-    const { status, period, device, office } = req.query;
+    const { status, period, device } = req.query;
     const userId = req.params.id;
+
+    const page = req.query.p || 0;
+    const casesPerPage = 10;
+
     const currentDate = new Date();
 
     let startDate;
@@ -114,7 +131,6 @@ const filterCasesGlober = async (req, res) => {
     filteredCases = await Case.find({
       $and: [
         userId ? { user: userId } : {},
-        office ? { closest_office: office } : {},
         selectedStatus ? { status: { $in: selectedStatus } } : {},
         startDate ? { startingDate: { $gte: startDate } } : {},
         device
@@ -123,8 +139,11 @@ const filterCasesGlober = async (req, res) => {
             }
           : {},
       ],
-    });
-
+    })
+      .sort({ startingDate: -1 })
+      .skip(page * casesPerPage)
+      .limit(casesPerPage);
+    console.log("filteredcases > ", filteredCases);
     if (filteredCases.length === 0) {
       return res.status(401).json({ error: "There are no matching cases." });
     }
@@ -143,6 +162,64 @@ const updateCase = async (req, res) => {
     await Case.updateOne({ _id: caseId }, { $set: updatedCase });
 
     res.status(200).send("Case updated");
+  } catch (err) {
+    res.status(404).send(err);
+  }
+};
+
+const filterCases = async (req, res) => {
+  try {
+    const { status, period, device, office } = req.query;
+    const page = req.query.p || 0;
+    const casesPerPage = 10;
+
+    const currentDate = new Date();
+
+    let startDate;
+    if (period) {
+      switch (period) {
+        case "15_days":
+          startDate = new Date(
+            currentDate.getTime() - 15 * 24 * 60 * 60 * 1000
+          );
+          break;
+        case "1_month":
+          startDate = new Date(
+            currentDate.getTime() - 30 * 24 * 60 * 60 * 1000
+          );
+          break;
+        case "6_months":
+          startDate = new Date(
+            currentDate.getTime() - 6 * 30 * 24 * 60 * 60 * 1000
+          );
+          break;
+        default:
+          startDate = 0;
+          break;
+      }
+    } else {
+      startDate = 0;
+    }
+
+    let filteredCases = [];
+
+    filteredCases = await Case.find({
+      $and: [
+        office ? { closest_office: office } : {},
+        status ? { status: status } : {},
+        startDate ? { startingDate: { $gte: startDate } } : {},
+
+        device ? { "damaged_equipment.name": device } : {},
+      ],
+    })
+      .sort({ startingDate: -1 })
+      .skip(page * casesPerPage)
+      .limit(casesPerPage);
+    if (filteredCases.length === 0) {
+      return res.status(401).json({ error: "There are no matching cases." });
+    }
+
+    res.status(200).json(filteredCases);
   } catch (err) {
     res.status(404).send(err);
   }
@@ -171,5 +248,6 @@ module.exports = {
   ownerCases,
   userCases,
   updateCase,
+  filterCases,
   searchIndividualCase,
 };
