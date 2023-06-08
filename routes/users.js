@@ -7,7 +7,6 @@ router.post("/signup", usersController.signup);
 router.post("/login", usersController.login);
 router.post("/logout", usersController.logout);
 router.get("/profileData/:id", usersController.profileData);
-router.get("/casesHistory/:id", usersController.casesHistory);
 router.put("/update/:id", usersController.updateUser);
 router.get("/lastCase/:id", usersController.lastCase);
 router.get("/secret", usersController.secret);

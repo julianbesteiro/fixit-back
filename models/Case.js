@@ -10,7 +10,7 @@ const caseSchema = new mongoose.Schema({
 
   damaged_equipment: {
     name: {
-      type: mongoose.SchemaTypes.ObjectId,
+      type: String,
       ref: "Device",
       required: true,
     },
@@ -38,11 +38,11 @@ const caseSchema = new mongoose.Schema({
     minlength: 50,
   },
 
-  // closest_office: {
-  //   type: mongoose.SchemaTypes.ObjectId,
-  //   ref: "Office",
-  //   required: true,
-  // },
+  closest_office: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: "Office",
+    required: true,
+  },
   startingDate: {
     type: Date,
     default: () => Date.now(),
@@ -52,9 +52,6 @@ const caseSchema = new mongoose.Schema({
   },
   closing_date: {
     type: Date,
-  },
-  address: {
-    type: String,
   },
 });
 
