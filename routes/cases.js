@@ -20,5 +20,6 @@ router.get(
   validateCredentials,
   casesController.filterCasesGlober
 );
+router.get("/:id", casesController.searchIndividualCase);
 
 module.exports = router;

@@ -219,10 +219,24 @@ const filterCases = async (req, res) => {
       return res.status(401).json({ error: "There are no matching cases." });
     }
 
-    console.log("filteredcases", filteredCases.length);
     res.status(200).json(filteredCases);
   } catch (err) {
     res.status(404).send(err);
+  }
+};
+
+const searchIndividualCase = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const data = await Case.findById(id);
+    if (!data) {
+      return res.status(404).json({ message: "The case wasnst founded" });
+    }
+
+    return res.json(data);
+  } catch (error) {
+    return res.status(500).json({ message: "Error in the server" });
   }
 };
 
@@ -235,4 +249,5 @@ module.exports = {
   userCases,
   updateCase,
   filterCases,
+  searchIndividualCase,
 };

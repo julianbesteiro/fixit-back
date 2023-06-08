@@ -36,10 +36,11 @@ const userSchema = new mongoose.Schema({
   },
   address: { type: String, required: true },
   location: {
-    type: [Number],
+    type: [String],
     required: true,
   },
   cases: { type: mongoose.SchemaTypes.ObjectId, ref: "Case" },
+  assigned_office: { type: mongoose.SchemaTypes.ObjectId, ref: "Office" },
 });
 
 userSchema.pre("save", async function (next) {
