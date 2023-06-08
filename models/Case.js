@@ -26,7 +26,16 @@ const caseSchema = new mongoose.Schema({
 
   status: {
     type: String,
-    enum: ["open", "assigned", "sent", "solved", "closed"],
+    enum: [
+      "open",
+      "in progress",
+      "partially solved",
+      "solved",
+      "in transit to office",
+      "in transit to glober",
+      "waiting for equipment",
+      "waiting for glober",
+    ],
     default: "open",
   },
 

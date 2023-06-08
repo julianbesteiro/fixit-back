@@ -40,6 +40,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   cases: { type: mongoose.SchemaTypes.ObjectId, ref: "Case" },
+  assigned_office: { type: mongoose.SchemaTypes.ObjectId, ref: "Office" },
 });
 
 userSchema.pre("save", async function (next) {
