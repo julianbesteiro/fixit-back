@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
   },
   address: { type: String, required: true },
   location: {
-    type: [Number],
+    type: [String],
     required: true,
   },
   cases: { type: mongoose.SchemaTypes.ObjectId, ref: "Case" },
