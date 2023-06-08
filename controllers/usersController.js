@@ -136,6 +136,8 @@ const updateUser = async (req, res) => {
 const searchUsers = async (req, res) => {
   try {
     const { term, isAdmin } = req.query;
+    const page = req.query.p || 0;
+    const casesPerPage = 5;
 
     if (term !== "undefined") {
       let query = {
@@ -150,7 +152,10 @@ const searchUsers = async (req, res) => {
         query = { ...query, is_admin: true };
       }
 
-      const users = await User.find(query);
+      const users = await User.find(query)
+        .sort({ startingDate: -1 })
+        .skip(page * casesPerPage)
+        .limit(casesPerPage);
 
       if (users.length !== 0) {
         res.json(users);
