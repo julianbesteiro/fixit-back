@@ -100,25 +100,6 @@ const profileData = async (req, res) => {
   }
 };
 
-const casesHistory = async (req, res) => {
-  try {
-    const userId = req.params.id;
-
-    const page = req.query.p || 0;
-    const casesPerPage = 10;
-
-    const casesHistory = await Case.where("user")
-      .equals(userId)
-      .sort({ startingDate: -1 })
-      .skip(page * casesPerPage)
-      .limit(casesPerPage);
-
-    res.status(200).json(casesHistory);
-  } catch (err) {
-    res.status(404).send(err);
-  }
-};
-
 const lastCase = async (req, res) => {
   try {
     const userId = req.params.id;
@@ -207,7 +188,6 @@ module.exports = {
   login,
   logout,
   profileData,
-  casesHistory,
   updateUser,
   secret,
   lastCase,
