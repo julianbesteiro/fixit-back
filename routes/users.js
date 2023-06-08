@@ -5,7 +5,7 @@ const { validateAdmin } = require("../middlewares/auth");
 
 router.post("/signup", usersController.signup);
 router.post("/login", usersController.login);
-router.post("/logout", usersController.logout);
+router.get("/logout", usersController.logout);
 router.get("/profileData/:id", usersController.profileData);
 router.put("/update/:id", usersController.updateUser);
 router.get("/lastCase/:id", usersController.lastCase);
