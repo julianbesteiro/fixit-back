@@ -4,7 +4,7 @@ const { officesController } = require("../controllers");
 const { validateAdmin } = require("../middlewares/auth");
 
 router.post("/create", validateAdmin, officesController.createOffice);
-router.get("/all", validateAdmin, officesController.viewAllOffices);
+router.get("/all", officesController.viewAllOffices);
 router.delete(
   "/delete/:idOffice",
   validateAdmin,
