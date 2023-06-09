@@ -27,7 +27,7 @@ const login = async (req, res) => {
     if (!user) {
       return res
         .status(203)
-        .json({ error: true, message: "The user doesn't exist." });
+        .json({ error: true, message: "Incorrect email or password." });
     }
 
     const isValid = await user.validatePassword(req.body.password);
@@ -35,7 +35,7 @@ const login = async (req, res) => {
     if (!isValid) {
       return res
         .status(203)
-        .json({ error: true, message: "Incorrect password." });
+        .json({ error: true, message: "Incorrect email or password." });
     }
 
     const {
