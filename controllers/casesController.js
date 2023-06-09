@@ -32,7 +32,7 @@ const getAll = async (req, res) => {
     const casesPerPage = 10;
 
     const allCases = await Case.find()
-      .sort({ startingDate: -1 })
+      .sort({ starting_date: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
 
@@ -49,7 +49,7 @@ const userCases = async (req, res) => {
     const casesPerPage = 10;
 
     const userCases = await Case.find({ user: userID })
-      .sort({ startingDate: -1 })
+      .sort({ starting_date: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
     if (userCases.length === 0) {
@@ -68,7 +68,7 @@ const ownerCases = async (req, res) => {
     const casesPerPage = 10;
 
     const ownerCases = await Case.find({ owner: ownerID })
-      .sort({ startingDate: -1 })
+      .sort({ starting_date: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
     if (ownerCases.length === 0) {
@@ -90,6 +90,10 @@ const filterCasesGlober = async (req, res) => {
     const casesPerPage = 10;
 
     const currentDate = new Date();
+
+    console.log("q", req.query);
+
+    if (device == "all") device = undefined;
 
     let startDate;
     if (period) {
@@ -132,7 +136,7 @@ const filterCasesGlober = async (req, res) => {
       $and: [
         userId ? { user: userId } : {},
         selectedStatus ? { status: { $in: selectedStatus } } : {},
-        startDate ? { startingDate: { $gte: startDate } } : {},
+        startDate ? { starting_date: { $gte: startDate } } : {},
         device
           ? {
               "damaged_equipment.name": device,
@@ -140,10 +144,9 @@ const filterCasesGlober = async (req, res) => {
           : {},
       ],
     })
-      .sort({ startingDate: -1 })
+      .sort({ starting_date: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
-    console.log("filteredcases > ", filteredCases);
     if (filteredCases.length === 0) {
       return res.status(401).json({ error: "There are no matching cases." });
     }
@@ -207,12 +210,12 @@ const filterCases = async (req, res) => {
       $and: [
         office ? { closest_office: office } : {},
         status ? { status: status } : {},
-        startDate ? { startingDate: { $gte: startDate } } : {},
+        startDate ? { starting_date: { $gte: startDate } } : {},
 
         device ? { "damaged_equipment.name": device } : {},
       ],
     })
-      .sort({ startingDate: -1 })
+      .sort({ starting_date: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
     if (filteredCases.length === 0) {

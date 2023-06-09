@@ -52,7 +52,7 @@ const caseSchema = new mongoose.Schema({
     ref: "Office",
     required: true,
   },
-  startingDate: {
+  starting_date: {
     type: Date,
     default: () => Date.now(),
   },

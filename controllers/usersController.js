@@ -104,7 +104,7 @@ const lastCase = async (req, res) => {
   try {
     const userId = req.params.id;
     const lastCase = await Case.find({ user: userId })
-      .sort({ startingDate: -1 })
+      .sort({ starting_date: -1 })
       .limit(1);
 
     res.status(200).json(lastCase);
@@ -153,7 +153,7 @@ const searchUsers = async (req, res) => {
       }
 
       const users = await User.find(query)
-        .sort({ startingDate: -1 })
+        .sort({ starting_date: -1 })
         .skip(page * casesPerPage)
         .limit(casesPerPage);
 
@@ -178,7 +178,7 @@ const getUsers = async (req, res) => {
     const usersPerPage = 5;
 
     const allUsers = await User.find(isAdmin ? { is_admin: isAdmin } : {})
-      .sort({ startingDate: -1 })
+      .sort({ starting_date: -1 })
       .skip(page * usersPerPage)
       .limit(usersPerPage);
 
