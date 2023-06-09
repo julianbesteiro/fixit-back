@@ -91,10 +91,6 @@ const filterCasesGlober = async (req, res) => {
 
     const currentDate = new Date();
 
-    console.log("q", req.query);
-
-    if (device == "all") device = undefined;
-
     let startDate;
     if (period) {
       switch (period) {
@@ -126,7 +122,7 @@ const filterCasesGlober = async (req, res) => {
       if (status === "solved") {
         selectedStatus = ["solved"];
       } else if (status === "pending") {
-        selectedStatus = ["open", "in progress", "solved", "partially solved"];
+        selectedStatus = ["open", "in progress", "partially solved"];
       }
     }
 
@@ -137,11 +133,7 @@ const filterCasesGlober = async (req, res) => {
         userId ? { user: userId } : {},
         selectedStatus ? { status: { $in: selectedStatus } } : {},
         startDate ? { starting_date: { $gte: startDate } } : {},
-        device
-          ? {
-              "damaged_equipment.name": device,
-            }
-          : {},
+        device && device != "all" ? { "damaged_equipment.name": device } : {},
       ],
     })
       .sort({ starting_date: -1 })

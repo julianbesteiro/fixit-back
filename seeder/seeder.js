@@ -446,7 +446,6 @@ async function seedData() {
 
     await Case.insertMany(cases);
 
-    console.log(Date.now() - 20 * 24 * 60 * 60 * 1000);
     console.log("Data seeded successfully");
   } catch (error) {
     console.error("Error seeding data:", error);
