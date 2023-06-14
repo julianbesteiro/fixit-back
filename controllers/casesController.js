@@ -143,7 +143,19 @@ const filterCasesGlober = async (req, res) => {
       return res.status(401).json({ error: "There are no matching cases." });
     }
 
-    res.status(200).json(filteredCases);
+    const cantPages = await Case.find({
+      $and: [
+        userId ? { user: userId } : {},
+        selectedStatus ? { status: { $in: selectedStatus } } : {},
+        startDate ? { starting_date: { $gte: startDate } } : {},
+        device && device != "all" ? { "damaged_equipment.name": device } : {},
+      ],
+    }).countDocuments();
+
+    res.status(200).json({
+      data: filteredCases,
+      countPages: Math.ceil(cantPages / casesPerPage),
+    });
   } catch (err) {
     res.status(404).send(err);
   }
