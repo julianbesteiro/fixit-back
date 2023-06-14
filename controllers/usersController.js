@@ -127,7 +127,34 @@ const updateUser = async (req, res) => {
 
     await User.updateOne({ _id: userId }, { $set: updatedUser });
 
-    res.status(200).send("User updated");
+    const user = await User.findOne({ _id: userId });
+    const {
+      id,
+      name,
+      email,
+      cellphone,
+      address,
+      image,
+      location,
+      role,
+      is_admin,
+    } = user;
+
+    const newToken = generateToken({
+      id,
+      name,
+      email,
+      cellphone,
+      address,
+      image,
+      location,
+      role,
+      is_admin,
+    });
+
+    res.cookie("token", newToken);
+
+    res.status(200).send(newToken);
   } catch (err) {
     res.status(404).send(err);
   }

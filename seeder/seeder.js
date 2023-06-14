@@ -1036,7 +1036,7 @@ async function seedData() {
 
     const users = [
       {
-        name: "Julian Besteiro.",
+        name: "Julian Besteiro",
         password:
           "$2b$08$2ogl9Z1H/di94an2uh5bvOiHaOGiQjdzyEND.WokzXGatqY21i5i6",
         email: "julianbesteiro1@gmail.com",
