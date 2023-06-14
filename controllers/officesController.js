@@ -13,15 +13,21 @@ const createOffice = async (req, res) => {
 
 const viewAllOffices = async (req, res) => {
   try {
-    const page = req.query.p || 0;
+    const page = parseInt(req.query.p) || 0;
     const officesPerPage = 10;
+
+    const totalOffices = await Office.countDocuments();
+    const totalPages = Math.ceil(totalOffices / officesPerPage);
 
     const officesList = await Office.find()
       .sort({ name: 1 })
       .skip(page * officesPerPage)
       .limit(officesPerPage);
 
-    res.status(200).json(officesList);
+    res.status(200).json({
+      totalPages: totalPages,
+      offices: officesList,
+    });
   } catch (err) {
     res.status(404).send(err);
   }
