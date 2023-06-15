@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const findNearbyOfficeService = require("../services/googlePlacesServices");
 
 const { placesServices } = require("../services");
 
