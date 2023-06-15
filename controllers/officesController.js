@@ -3,11 +3,22 @@ const { User, Case, Office } = require("../models");
 
 const createOffice = async (req, res) => {
   try {
-    const newOffice = new Office(req.body);
-    await newOffice.save();
-    res.status(200).json(newOffice);
+    console.log(req.body);
+    const { location } = req.body;
+    // Verificar si ya existe una oficina con la misma ubicación
+    const existingOffice = await Office.findOne({ location });
+
+    if (existingOffice) {
+      // La oficina ya existe en la base de datos
+      res.status(409).json({ message: "La oficina ya existe" });
+    } else {
+      // Crear una nueva oficina
+      const newOffice = new Office(req.body);
+      await newOffice.save();
+      res.status(200).json(newOffice);
+    }
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
