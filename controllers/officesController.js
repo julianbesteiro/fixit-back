@@ -3,21 +3,32 @@ const { User, Case, Office } = require("../models");
 
 const createOffice = async (req, res) => {
   try {
-    console.log(req.body);
-    const { location } = req.body;
-    // Verificar si ya existe una oficina con la misma ubicación
-    const existingOffice = await Office.findOne({ location });
+    console.log("body", req.body);
+    const offices = req.body;
+    const allOffices = [];
 
-    if (existingOffice) {
-      // La oficina ya existe en la base de datos
-      res.status(409).json({ message: "La oficina ya existe" });
-    } else {
-      // Crear una nueva oficina
-      const newOffice = new Office(req.body);
-      await newOffice.save();
-      res.status(200).json(newOffice);
+    for (const office of offices) {
+      // Verificar si ya existe una oficina con la misma ubicación
+      const existingOffice = await Office.findOne({
+        location: office.location,
+      });
+
+      if (existingOffice) {
+        // La oficina ya existe en la base de datos
+        console.log(`La oficina en la ubicación ${office.location} ya existe`);
+        allOffices.push(existingOffice);
+      } else {
+        // Crear una nueva oficina
+        const newOffice = new Office(office);
+        await newOffice.save();
+        allOffices.push(newOffice);
+        console.log(`Nueva oficina creada en la ubicación ${office.location}`);
+      }
     }
+
+    res.status(200).json(allOffices);
   } catch (err) {
+    console.error(err);
     res.status(500).send(err);
   }
 };
