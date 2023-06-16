@@ -13,12 +13,8 @@ async function seedData() {
     const offices = [
       {
         name: "Globant Tower",
-        address: {
-          street: "Carlos M. Della Paolera 261",
-          city: "Buenos Aires",
-          state: "CABA",
-          country: "Argentina",
-        },
+        address:
+          "street: Carlos M. Della Paolera 261, city: Buenos Aires,state: CABA country: Argentina",
         location: [1, 2],
         map: `<svg
         width="1110"
@@ -696,12 +692,9 @@ async function seedData() {
       },
       {
         name: "La Docta",
-        address: {
-          street: "Av. Colón 3440",
-          city: "Barrio Alto Alberdi",
-          state: "Cordoba",
-          country: "Argentina",
-        },
+        address:
+          "street: Carlos M. Della Paolera 261, city: Buenos Aires,state: CABA country: Argentina",
+
         location: [2, 3],
         map: `<svg width="1110" height="1160" viewBox="0 0 1110 1160" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="1110" height="1160" fill="#E5E5E5"/>
@@ -836,12 +829,9 @@ async function seedData() {
       },
       {
         name: "Bahia Blanca",
-        address: {
-          street: "Dr. Luis María Drago 45, 9° Piso",
-          city: "Bahía Blanca",
-          state: "Buenos Aires",
-          country: "Argentina",
-        },
+        address:
+          "street: Carlos M. Della Paolera 261, city: Buenos Aires,state: CABA country: Argentina",
+
         location: [3, 4],
         map: `<svg width="1110" height="1160" viewBox="0 0 1110 1160" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="1110" height="1160" fill="#E5E5E5"/>
@@ -1061,43 +1051,43 @@ async function seedData() {
 
     const devices = [
       {
-        name: "Modem",
+        name: "modem",
       },
       {
         name: "HDMI cable",
       },
       {
-        name: "Monitor",
+        name: "monitor",
       },
       {
-        name: "Cellphone",
+        name: "cell phone",
       },
       {
-        name: "Notebook",
+        name: "laptop",
       },
       {
-        name: "Headset",
+        name: "headset",
       },
       {
-        name: "Mouse",
+        name: "mouse",
       },
       {
-        name: "Chair",
+        name: "chair",
       },
       {
-        name: "Keyword",
+        name: "keyboard",
       },
       {
         name: "Notebook charger",
       },
       {
-        name: "Cellphone charger",
+        name: "cellphone charger",
       },
       {
-        name: "Port adapter",
+        name: "port adapter",
       },
       {
-        name: "Other",
+        name: "other",
       },
     ];
 
