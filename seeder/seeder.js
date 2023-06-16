@@ -12,10 +12,9 @@ async function seedData() {
 
     const offices = [
       {
-        name: "Globant Tower",
-        address:
-          "street: Carlos M. Della Paolera 261, city: Buenos Aires,state: CABA country: Argentina",
-        location: [1, 2],
+        name: "Globant North Park",
+        address: "Correa 2442, C.P.: C1429DRN, Buenos Aires",
+        location: [-34.5440497, -58.4750545],
         map: `<svg
         width="1110"
         height="1160"
@@ -691,11 +690,10 @@ async function seedData() {
       </svg>`,
       },
       {
-        name: "La Docta",
-        address:
-          "street: Carlos M. Della Paolera 261, city: Buenos Aires,state: CABA country: Argentina",
+        name: "Globant Tower",
+        address: "Carlos M. Della Paolera 261 C1001ADA, CABA, Buenos Aires",
 
-        location: [2, 3],
+        location: [-34.5953616, -58.373721],
         map: `<svg width="1110" height="1160" viewBox="0 0 1110 1160" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="1110" height="1160" fill="#E5E5E5"/>
         <rect id="Rectangle Main" width="1110" height="1160" rx="34" fill="white"/>
@@ -828,11 +826,11 @@ async function seedData() {
         </svg>`,
       },
       {
-        name: "Bahia Blanca",
+        name: "Bahía Blanca",
         address:
-          "street: Carlos M. Della Paolera 261, city: Buenos Aires,state: CABA country: Argentina",
+          "Dr. Luis María Drago 45, 9° Piso, C.P.: B8000DCA, Bahía Blanca",
 
-        location: [3, 4],
+        location: [-38.7198007, -62.2670512],
         map: `<svg width="1110" height="1160" viewBox="0 0 1110 1160" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="1110" height="1160" fill="#E5E5E5"/>
         <rect id="Rectangle Main" width="1110" height="1160" rx="34" fill="white"/>
