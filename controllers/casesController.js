@@ -3,8 +3,11 @@ const { Case, User } = require("../models");
 const { validateCredentials } = require("../middlewares/auth");
 
 const createCase = async (req, res) => {
+  console.log("reqbody", req.body.issue);
+  const { issue } = req.body;
+
   try {
-    const newCase = new Case(req.body);
+    const newCase = new Case(issue);
 
     await newCase.save();
 
