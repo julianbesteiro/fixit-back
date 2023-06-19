@@ -16,7 +16,7 @@ const caseSchema = new mongoose.Schema({
     },
     image: {
       type: String,
-      required: true,
+      default: "https://imgur.com/a/J1R2Ye8",
     },
     location: {
       type: String,
