@@ -1,8 +1,12 @@
 {
   "name": "fixit-back",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "16.20.0",
+  "main": "server.js",
+  "engines": {
+    "node": "",
+    "npm": "8.19.14"
+  },
   "scripts": {
     "start": "nodemon server.js",
     "dev": "nodemon server.js"
@@ -28,7 +32,7 @@
     "url": "git+https://github.com/julianbesteiro/fixit-back.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "fixit team",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/julianbesteiro/fixit-back/issues"
