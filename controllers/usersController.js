@@ -114,7 +114,9 @@ const lastCase = async (req, res) => {
 };
 
 const secret = (req, res) => {
-  const { payload } = validateToken(req.cookies.token);
+  console.log("body", req.body);
+  const { token } = req.body;
+  const { payload } = validateToken(token);
   req.user = payload;
 
   res.send(payload);
