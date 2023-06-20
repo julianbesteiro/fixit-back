@@ -64,6 +64,7 @@ const login = async (req, res) => {
 
     res.cookie("token", token);
     res.status(200).json({
+      token: token,
       data: {
         id,
         name,
@@ -114,9 +115,7 @@ const lastCase = async (req, res) => {
 };
 
 const secret = (req, res) => {
-  console.log("body", req.body);
-  const { token } = req.body;
-  const { payload } = validateToken(token);
+  const { payload } = validateToken(req.cookies.token);
   req.user = payload;
 
   res.send(payload);
