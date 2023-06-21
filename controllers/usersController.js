@@ -63,9 +63,7 @@ const login = async (req, res) => {
     });
 
     // Configuración de la cookie
-    res.setHeader("Set-Cookie", [
-      `token=${token}; HttpOnly; Secure; SameSite=None`,
-    ]);
+    res.setHeader("Set-Cookie", [`token=${token}; HttpOnly; Secure`]);
 
     res.status(200).json({
       data: {
@@ -157,9 +155,7 @@ const updateUser = async (req, res) => {
       is_admin,
     });
 
-    res.setHeader("Set-Cookie", [
-      `token=${token}; HttpOnly; Secure; SameSite=None`,
-    ]);
+    res.setHeader("Set-Cookie", [`token=${token}; HttpOnly; Secure`]);
 
     res.status(200).send({ message: "The user was updated" });
   } catch (err) {
