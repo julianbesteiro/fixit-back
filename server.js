@@ -12,17 +12,15 @@ const app = express();
 
 app.use(express.json({ limit: "50mb" }));
 
+app.use(cookieParser());
+
 // Configuración de CORS
 app.use(
   cors({
-    origin: "https://fixit-front.vercel.app", // Reemplaza con la URL de tu frontend en Vercel
+    origin: "https://fixit-front.vercel.app" || "localhost:3000", // Reemplaza con la URL de tu frontend en Vercel
     credentials: true,
   })
 );
-
-connectDB();
-
-app.use(cookieParser());
 
 // Configuración de seguridad de cookies
 app.use((req, res, next) => {
@@ -42,6 +40,8 @@ app.use((req, res, next) => {
 
   next();
 });
+
+connectDB();
 
 app.use("/api", routes);
 
