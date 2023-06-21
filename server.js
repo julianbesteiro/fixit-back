@@ -15,7 +15,7 @@ app.use(express.json({ limit: "50mb" }));
 // Configuración de CORS
 app.use(
   cors({
-    origin: "https://fixit-front.vercel.app/", // Reemplaza con la URL de tu frontend en Vercel
+    origin: "https://fixit-front.vercel.app", // Reemplaza con la URL de tu frontend en Vercel
     credentials: true,
   })
 );
@@ -26,7 +26,7 @@ app.use(cookieParser());
 
 // Configuración de seguridad de cookies
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://fixit-front.vercel.app/"); // Reemplaza con la URL de tu frontend en Vercel
+  res.header("Access-Control-Allow-Origin", "https://fixit-front.vercel.app"); // Reemplaza con la URL de tu frontend en Vercel
   res.header("Access-Control-Allow-Credentials", true);
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header(
