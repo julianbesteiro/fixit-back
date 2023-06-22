@@ -51,7 +51,7 @@ const viewAllOffices = async (req, res) => {
       offices: officesList,
     });
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -63,7 +63,7 @@ const deleteOffice = async (req, res) => {
 
     res.status(200).send("Office deleted");
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -76,7 +76,7 @@ const editOffice = async (req, res) => {
 
     res.status(200).send("Office updated");
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 

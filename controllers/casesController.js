@@ -13,7 +13,7 @@ const createCase = async (req, res) => {
 
     res.status(200).json(newCase);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -23,7 +23,7 @@ const allDevices = async (req, res) => {
 
     res.status(200).json(devices);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -41,7 +41,7 @@ const getAll = async (req, res) => {
 
     res.status(200).json(allCases);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -61,7 +61,7 @@ const userCases = async (req, res) => {
 
     res.status(200).json(userCases);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 const ownerCases = async (req, res) => {
@@ -80,7 +80,7 @@ const ownerCases = async (req, res) => {
 
     res.status(200).json(ownerCases);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -124,8 +124,12 @@ const filterCasesGlober = async (req, res) => {
     if (status) {
       if (status === "solved") {
         selectedStatus = ["solved"];
-      } else if (status === "pending") {
-        selectedStatus = ["open", "in progress", "partially solved"];
+      } else if (status === "open") {
+        selectedStatus = ["open"];
+      } else if (status === "partially solved") {
+        selectedStatus = ["partially solved"];
+      } else if (status === "in progress") {
+        selectedStatus = ["in progress"];
       }
     }
 
@@ -160,7 +164,7 @@ const filterCasesGlober = async (req, res) => {
       countPages: Math.ceil(cantPages / casesPerPage),
     });
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -173,7 +177,7 @@ const updateCase = async (req, res) => {
 
     res.status(200).send("Case updated");
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -231,7 +235,7 @@ const filterCases = async (req, res) => {
 
     res.status(200).json(filteredCases);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
