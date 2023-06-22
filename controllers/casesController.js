@@ -55,9 +55,9 @@ const userCases = async (req, res) => {
       .sort({ starting_date: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
-    if (userCases.length === 0) {
-      return res.status(401).json({ error: "There are no matching cases." });
-    }
+    // if (userCases.length === 0) {
+    //   return res.status(401).json({ error: "There are no matching cases." });
+    // }
 
     res.status(200).json(userCases);
   } catch (err) {
@@ -74,9 +74,9 @@ const ownerCases = async (req, res) => {
       .sort({ starting_date: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
-    if (ownerCases.length === 0) {
-      return res.status(401).json({ error: "There are no matching cases." });
-    }
+    // if (ownerCases.length === 0) {
+    //   return res.status(401).json({ error: "There are no matching cases." });
+    // }
 
     res.status(200).json(ownerCases);
   } catch (err) {
@@ -146,9 +146,9 @@ const filterCasesGlober = async (req, res) => {
       .sort({ starting_date: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
-    if (filteredCases.length === 0) {
-      return res.status(401).json({ error: "There are no matching cases." });
-    }
+    // if (filteredCases.length === 0) {
+    //   return res.status(401).json({ error: "There are no matching cases." });
+    // }
 
     const cantPages = await Case.find({
       $and: [
@@ -229,9 +229,9 @@ const filterCases = async (req, res) => {
       .sort({ starting_date: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
-    if (filteredCases.length === 0) {
-      return res.status(401).json({ error: "There are no matching cases." });
-    }
+    // if (filteredCases.length === 0) {
+    //   return res.status(401).json({ error: "There are no matching cases." });
+    // }
 
     res.status(200).json(filteredCases);
   } catch (err) {
