@@ -20,6 +20,9 @@ const officeSchema = new mongoose.Schema({
   map: {
     type: String,
   },
+  rating: {
+    type: Number,
+  },
 });
 
 module.exports = mongoose.model("Office", officeSchema);
