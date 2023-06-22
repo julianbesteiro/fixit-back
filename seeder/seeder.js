@@ -12,9 +12,9 @@ async function seedData() {
 
     const offices = [
       {
-        name: "Globant North Park",
-        address: "Correa 2442, C.P.: C1429DRN, Buenos Aires",
-        location: [-34.5440497, -58.4750545],
+        name: "ARG - Tandil",
+        address: "9 de julio 455, C.P.: B7000AQI, Tandil, Buenos Aires",
+        location: [-36.3815734, -61.3279731],
         map: `<svg
         width="1110"
         height="1160"
@@ -1116,7 +1116,7 @@ async function seedData() {
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1130,7 +1130,7 @@ async function seedData() {
           image: "headset.jpg",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1145,7 +1145,7 @@ async function seedData() {
           image: "mouse.jpg",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1161,7 +1161,7 @@ async function seedData() {
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1175,7 +1175,7 @@ async function seedData() {
           image: "cellphone.jpg",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1189,7 +1189,7 @@ async function seedData() {
           image: "chair.jpg",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1204,7 +1204,7 @@ async function seedData() {
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1218,7 +1218,7 @@ async function seedData() {
           image: "notebookcharger.jpg",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "in progress",
+        status: "In progress",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1233,7 +1233,7 @@ async function seedData() {
           image: "cellphonecharger.jpg",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "in progress",
+        status: "In progress",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1249,7 +1249,7 @@ async function seedData() {
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "in progress",
+        status: "In progress",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1263,7 +1263,7 @@ async function seedData() {
           image: "other.jpg",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "in progress",
+        status: "In progress",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1277,7 +1277,7 @@ async function seedData() {
           image: "notebook.jpg",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "partially solved",
+        status: "Partially solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1293,7 +1293,7 @@ async function seedData() {
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "partially solved",
+        status: "Partially solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1308,7 +1308,7 @@ async function seedData() {
           image: "notebook.jpg",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "partially solved",
+        status: "Partially solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1322,7 +1322,7 @@ async function seedData() {
           image: "notebook.jpg",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1337,7 +1337,7 @@ async function seedData() {
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1352,7 +1352,7 @@ async function seedData() {
           image: "notebook.jpg",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1367,7 +1367,7 @@ async function seedData() {
           image: "notebook.jpg",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "OLDEST, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1383,7 +1383,7 @@ async function seedData() {
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "NEWEST, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1398,7 +1398,7 @@ async function seedData() {
           image: "notebook.jpg",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1412,7 +1412,7 @@ async function seedData() {
           image: "notebook.jpg",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
