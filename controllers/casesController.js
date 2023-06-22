@@ -253,6 +253,17 @@ const searchIndividualCase = async (req, res) => {
     return res.status(500).json({ message: "Error in the server" });
   }
 };
+const deleteCase = async (req, res) => {
+  try {
+    const caseId = req.params.id;
+
+    await Case.deleteOne({ _id: caseId });
+
+    res.status(200).send("Case deleted");
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
 
 module.exports = {
   createCase,
@@ -264,4 +275,5 @@ module.exports = {
   updateCase,
   filterCases,
   searchIndividualCase,
+  deleteCase,
 };
