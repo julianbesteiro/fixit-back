@@ -1109,7 +1109,7 @@ async function seedData() {
     const cases = [
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Notebook",
           image: "notebook.jpg",
@@ -1124,7 +1124,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Headset",
           image: "headset.jpg",
@@ -1139,7 +1139,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Mouse",
           image: "mouse.jpg",
@@ -1154,7 +1154,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Modem",
           image: "modem.jpg",
@@ -1169,7 +1169,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Cellphone",
           image: "cellphone.jpg",
@@ -1183,7 +1183,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Chair",
           image: "chair.jpg",
@@ -1197,7 +1197,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Keyword",
           image: "keyword.jpg",
@@ -1212,7 +1212,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook charger",
           image: "notebookcharger.jpg",
@@ -1227,7 +1227,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Cellphone charger",
           image: "cellphonecharger.jpg",
@@ -1242,7 +1242,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Port adapter",
           image: "portadapter.jpg",
@@ -1257,7 +1257,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Other",
           image: "other.jpg",
@@ -1271,7 +1271,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
           image: "notebook.jpg",
@@ -1286,7 +1286,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Notebook",
           image: "notebook.jpg",
@@ -1302,7 +1302,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
           image: "notebook.jpg",
@@ -1316,7 +1316,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
           image: "notebook.jpg",
@@ -1330,7 +1330,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Notebook",
           image: "notebook.jpg",
@@ -1346,7 +1346,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
           image: "notebook.jpg",
@@ -1361,7 +1361,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
           image: "notebook.jpg",
@@ -1376,7 +1376,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Notebook",
           image: "notebook.jpg",
@@ -1392,7 +1392,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
           image: "notebook.jpg",
@@ -1406,7 +1406,7 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
           image: "notebook.jpg",
