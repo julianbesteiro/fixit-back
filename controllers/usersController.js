@@ -16,7 +16,7 @@ const signup = async (req, res) => {
     await newUser.save();
     res.sendStatus(200);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -96,7 +96,7 @@ const profileData = async (req, res) => {
 
     res.status(200).json(profileData);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -109,7 +109,7 @@ const lastCase = async (req, res) => {
 
     res.status(200).json(lastCase);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -156,7 +156,7 @@ const updateUser = async (req, res) => {
 
     res.status(200).send(newToken);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -211,7 +211,7 @@ const getUsers = async (req, res) => {
 
     res.status(200).json(allUsers);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 

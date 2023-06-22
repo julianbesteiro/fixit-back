@@ -7,7 +7,7 @@ const createDevice = async (req, res) => {
     await newDevice.save();
     res.status(200).json(newDevice);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -23,7 +23,7 @@ const viewAllDevices = async (req, res) => {
 
     res.status(200).json(devicesList);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -35,7 +35,7 @@ const deleteDevice = async (req, res) => {
 
     res.status(200).send("Device deleted");
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -48,7 +48,7 @@ const editDevice = async (req, res) => {
 
     res.status(200).send("Device updated");
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
