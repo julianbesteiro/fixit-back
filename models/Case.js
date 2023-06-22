@@ -4,7 +4,7 @@ const caseSchema = new mongoose.Schema({
   user: { type: mongoose.SchemaTypes.ObjectId, ref: "User", required: true },
 
   home_office: {
-    type: Boolean,
+    type: String,
     required: true,
   },
 
@@ -16,7 +16,8 @@ const caseSchema = new mongoose.Schema({
     },
     image: {
       type: String,
-      default: "https://imgur.com/a/J1R2Ye8",
+      default:
+        "https://th.bing.com/th/id/OIP.Cfa8sRTwoZG6n1ShByoNNgHaHa?pid=ImgDet&rs=1",
     },
     location: {
       type: String,
