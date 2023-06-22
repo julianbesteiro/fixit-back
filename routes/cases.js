@@ -12,6 +12,7 @@ router.get("/user/:id", validateAdmin, casesController.userCases);
 router.get("/owner/:id", validateAdmin, casesController.ownerCases);
 router.get("/filter", validateAdmin, casesController.filterCases);
 router.put("/update/:id", validateAdmin, casesController.updateCase);
+router.delete("/delete/:id", casesController.deleteCase);
 
 //user
 
