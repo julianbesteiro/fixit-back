@@ -17,6 +17,25 @@ findNearbyOfficeServices = async ({ lat, lng }) => {
   }
 };
 
+directionsAutocomplete = async (input) => {
+  const types = "geocode";
+  const params = new URLSearchParams({
+    input: input,
+    types: types,
+    key: apiKey,
+  });
+
+  const autocompleteURL = `${apiUrl}/place/autocomplete/json?${params.toString()}`;
+
+  try {
+    const response = await axios.get(autocompleteURL);
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch places from Google Maps API");
+  }
+};
+
 module.exports = {
   findNearbyOfficeServices,
+  directionsAutocomplete,
 };
