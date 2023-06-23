@@ -1112,7 +1112,8 @@ async function seedData() {
         home_office: "home",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
@@ -1127,7 +1128,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Headset",
-          image: "headset.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
         status: "Open",
@@ -1142,7 +1144,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Mouse",
-          image: "mouse.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
         status: "Open",
@@ -1157,7 +1160,8 @@ async function seedData() {
         home_office: "home",
         damaged_equipment: {
           name: "Modem",
-          image: "modem.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
@@ -1172,7 +1176,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Cellphone",
-          image: "cellphone.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
         status: "Open",
@@ -1186,7 +1191,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Chair",
-          image: "chair.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
         status: "Open",
@@ -1200,7 +1206,8 @@ async function seedData() {
         home_office: "home",
         damaged_equipment: {
           name: "Keyword",
-          image: "keyword.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
@@ -1215,7 +1222,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Notebook charger",
-          image: "notebookcharger.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
         status: "In progress",
@@ -1230,7 +1238,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Cellphone charger",
-          image: "cellphonecharger.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
         status: "In progress",
@@ -1245,7 +1254,8 @@ async function seedData() {
         home_office: "home",
         damaged_equipment: {
           name: "Port adapter",
-          image: "portadapter.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
@@ -1260,7 +1270,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Other",
-          image: "other.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
         status: "In progress",
@@ -1274,7 +1285,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
         status: "Partially solved",
@@ -1289,7 +1301,8 @@ async function seedData() {
         home_office: "home",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
@@ -1305,7 +1318,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
         status: "Partially solved",
@@ -1319,7 +1333,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
         status: "Solved",
@@ -1333,7 +1348,8 @@ async function seedData() {
         home_office: "home",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
@@ -1349,7 +1365,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
         status: "Solved",
@@ -1364,7 +1381,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
         status: "Solved",
@@ -1379,7 +1397,8 @@ async function seedData() {
         home_office: "home",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
@@ -1395,7 +1414,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
         status: "Solved",
@@ -1409,7 +1429,8 @@ async function seedData() {
         home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
         status: "Solved",
