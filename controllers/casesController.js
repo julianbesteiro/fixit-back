@@ -123,15 +123,17 @@ const filterCasesGlober = async (req, res) => {
     let selectedStatus;
     if (status) {
       if (status === "solved") {
-        selectedStatus = ["solved"];
-      } else if (status === "open") {
-        selectedStatus = ["open"];
-      } else if (status === "partially solved") {
-        selectedStatus = ["partially solved"];
-      } else if (status === "in progress") {
-        selectedStatus = ["in progress"];
+        selectedStatus = ["Solved"];
+      } else if (status === "pending") {
+        selectedStatus = ["Open", "Partially solved", "In progress"];
+      } else if (status === "all") {
+        selectedStatus = ["Open", "Partially solved", "In progress", "Solved"];
       }
     }
+
+    console.log("query", req.query);
+
+    console.log("sel", selectedStatus);
 
     let filteredCases = [];
 
