@@ -131,10 +131,6 @@ const filterCasesGlober = async (req, res) => {
       }
     }
 
-    console.log("query", req.query);
-
-    console.log("sel", selectedStatus);
-
     let filteredCases = [];
 
     filteredCases = await Case.find({
@@ -217,12 +213,29 @@ const filterCases = async (req, res) => {
       startDate = 0;
     }
 
+    let selectedStatus;
+    if (status) {
+      if (status === "solved") {
+        selectedStatus = ["Solved"];
+      } else if (status === "open") {
+        selectedStatus = ["Open"];
+      } else if (status === "all") {
+        selectedStatus = ["all"];
+      } else if (status === "solved") {
+        selectedStatus = ["Solved"];
+      } else if (status === "partially solved") {
+        selectedStatus = ["Partially solved"];
+      } else if (status === "in progress") {
+        selectedStatus = ["In progress"];
+      }
+    }
+
     let filteredCases = [];
 
     filteredCases = await Case.find({
       $and: [
         office ? { closest_office: office } : {},
-        status ? { status: status } : {},
+        selectedStatus ? { status: { $in: selectedStatus } } : {},
         startDate ? { starting_date: { $gte: startDate } } : {},
 
         device ? { "damaged_equipment.name": device } : {},
@@ -234,8 +247,18 @@ const filterCases = async (req, res) => {
     // if (filteredCases.length === 0) {
     //   return res.status(401).json({ error: "There are no matching cases." });
     // }
+    const cantPages = await Case.find({
+      $and: [
+        selectedStatus ? { status: { $in: selectedStatus } } : {},
+        startDate ? { starting_date: { $gte: startDate } } : {},
+        device && device != "all" ? { "damaged_equipment.name": device } : {},
+      ],
+    }).countDocuments();
 
-    res.status(200).json(filteredCases);
+    res.status(200).json({
+      data: filteredCases,
+      countPages: Math.ceil(cantPages / casesPerPage),
+    });
   } catch (err) {
     res.status(500).send(err);
   }
