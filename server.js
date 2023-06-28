@@ -17,31 +17,11 @@ app.use(cookieParser());
 // Configuración de CORS
 app.use(
   cors({
-
     origin: ["http://localhost:3000", "https://fixit-front.vercel.app"],
 
     credentials: true,
   })
 );
-
-// Configuración de seguridad de cookies
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://fixit-front.vercel.app"); // Reemplaza con la URL de tu frontend en Vercel
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-
-  // Configuración de la cookie
-  res.cookie("cookieName", "cookieValue", {
-    httpOnly: true,
-    secure: true,
-  });
-
-  next();
-});
 
 connectDB();
 
