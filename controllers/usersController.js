@@ -62,19 +62,8 @@ const login = async (req, res) => {
       is_admin,
     });
 
-    res.cookie("token", token);
     res.status(200).json({
-      data: {
-        id,
-        name,
-        email,
-        cellphone,
-        address,
-        image,
-        location,
-        role,
-        is_admin,
-      },
+      token,
       message: "is logged",
       error: false,
     });
@@ -114,7 +103,7 @@ const lastCase = async (req, res) => {
 };
 
 const secret = (req, res) => {
-  const { payload } = validateToken(req.cookies.token);
+  const { payload } = validateToken(req.body.token);
   req.user = payload;
 
   res.send(payload);
