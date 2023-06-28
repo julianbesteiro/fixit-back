@@ -66,6 +66,17 @@ const login = async (req, res) => {
       token,
       message: "is logged",
       error: false,
+      data: {
+        id,
+        name,
+        email,
+        cellphone,
+        address,
+        image,
+        location,
+        role,
+        is_admin,
+      },
     });
   } catch (err) {
     res.status(500).send(err);
