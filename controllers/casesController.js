@@ -13,7 +13,7 @@ const createCase = async (req, res) => {
 
     res.status(200).json(newCase);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -23,7 +23,7 @@ const allDevices = async (req, res) => {
 
     res.status(200).json(devices);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -41,7 +41,7 @@ const getAll = async (req, res) => {
 
     res.status(200).json(allCases);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -55,13 +55,13 @@ const userCases = async (req, res) => {
       .sort({ starting_date: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
-    if (userCases.length === 0) {
-      return res.status(401).json({ error: "There are no matching cases." });
-    }
+    // if (userCases.length === 0) {
+    //   return res.status(401).json({ error: "There are no matching cases." });
+    // }
 
     res.status(200).json(userCases);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 const ownerCases = async (req, res) => {
@@ -74,13 +74,13 @@ const ownerCases = async (req, res) => {
       .sort({ starting_date: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
-    if (ownerCases.length === 0) {
-      return res.status(401).json({ error: "There are no matching cases." });
-    }
+    // if (ownerCases.length === 0) {
+    //   return res.status(401).json({ error: "There are no matching cases." });
+    // }
 
     res.status(200).json(ownerCases);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -123,9 +123,11 @@ const filterCasesGlober = async (req, res) => {
     let selectedStatus;
     if (status) {
       if (status === "solved") {
-        selectedStatus = ["solved"];
+        selectedStatus = ["Solved"];
       } else if (status === "pending") {
-        selectedStatus = ["open", "in progress", "partially solved"];
+        selectedStatus = ["Open", "Partially solved", "In progress"];
+      } else if (status === "all") {
+        selectedStatus = ["Open", "Partially solved", "In progress", "Solved"];
       }
     }
 
@@ -142,9 +144,9 @@ const filterCasesGlober = async (req, res) => {
       .sort({ starting_date: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
-    if (filteredCases.length === 0) {
-      return res.status(401).json({ error: "There are no matching cases." });
-    }
+    // if (filteredCases.length === 0) {
+    //   return res.status(401).json({ error: "There are no matching cases." });
+    // }
 
     const cantPages = await Case.find({
       $and: [
@@ -160,7 +162,7 @@ const filterCasesGlober = async (req, res) => {
       countPages: Math.ceil(cantPages / casesPerPage),
     });
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -173,7 +175,7 @@ const updateCase = async (req, res) => {
 
     res.status(200).send("Case updated");
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -211,12 +213,29 @@ const filterCases = async (req, res) => {
       startDate = 0;
     }
 
+    let selectedStatus;
+    if (status) {
+      if (status === "solved") {
+        selectedStatus = ["Solved"];
+      } else if (status === "open") {
+        selectedStatus = ["Open"];
+      } else if (status === "all") {
+        selectedStatus = ["all"];
+      } else if (status === "solved") {
+        selectedStatus = ["Solved"];
+      } else if (status === "partially solved") {
+        selectedStatus = ["Partially solved"];
+      } else if (status === "in progress") {
+        selectedStatus = ["In progress"];
+      }
+    }
+
     let filteredCases = [];
 
     filteredCases = await Case.find({
       $and: [
         office ? { closest_office: office } : {},
-        status ? { status: status } : {},
+        selectedStatus ? { status: { $in: selectedStatus } } : {},
         startDate ? { starting_date: { $gte: startDate } } : {},
 
         device ? { "damaged_equipment.name": device } : {},
@@ -225,13 +244,23 @@ const filterCases = async (req, res) => {
       .sort({ starting_date: -1 })
       .skip(page * casesPerPage)
       .limit(casesPerPage);
-    if (filteredCases.length === 0) {
-      return res.status(401).json({ error: "There are no matching cases." });
-    }
+    // if (filteredCases.length === 0) {
+    //   return res.status(401).json({ error: "There are no matching cases." });
+    // }
+    const cantPages = await Case.find({
+      $and: [
+        selectedStatus ? { status: { $in: selectedStatus } } : {},
+        startDate ? { starting_date: { $gte: startDate } } : {},
+        device && device != "all" ? { "damaged_equipment.name": device } : {},
+      ],
+    }).countDocuments();
 
-    res.status(200).json(filteredCases);
+    res.status(200).json({
+      data: filteredCases,
+      countPages: Math.ceil(cantPages / casesPerPage),
+    });
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -249,6 +278,17 @@ const searchIndividualCase = async (req, res) => {
     return res.status(500).json({ message: "Error in the server" });
   }
 };
+const deleteCase = async (req, res) => {
+  try {
+    const caseId = req.params.id;
+
+    await Case.deleteOne({ _id: caseId });
+
+    res.status(200).send("Case deleted");
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
 
 module.exports = {
   createCase,
@@ -260,4 +300,5 @@ module.exports = {
   updateCase,
   filterCases,
   searchIndividualCase,
+  deleteCase,
 };

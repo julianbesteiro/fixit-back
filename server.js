@@ -17,7 +17,9 @@ app.use(cookieParser());
 // Configuración de CORS
 app.use(
   cors({
-    origin: "https://fixit-front.vercel.app" || "localhost:3000", // Reemplaza con la URL de tu frontend en Vercel
+
+    origin: ["http://localhost:3000", "https://fixit-front.vercel.app"],
+
     credentials: true,
   })
 );

@@ -2,6 +2,8 @@
 
 const mongoose = require("mongoose");
 const { Case, User, Office, Device } = require("../models");
+require("dotenv").config();
+
 const NAME = process.env.DB_NAME;
 const USER = process.env.DB_USER;
 const PASSWORD = process.env.DB_PASSWORD;
@@ -18,9 +20,9 @@ async function seedData() {
 
     const offices = [
       {
-        name: "Globant North Park",
-        address: "Correa 2442, C.P.: C1429DRN, Buenos Aires",
-        location: [-34.5440497, -58.4750545],
+        name: "ARG - Tandil",
+        address: "9 de julio 455, C.P.: B7000AQI, Tandil, Buenos Aires",
+        location: [-36.3815734, -61.3279731],
         map: `<svg
         width="1110"
         height="1160"
@@ -1115,14 +1117,15 @@ async function seedData() {
     const cases = [
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1130,13 +1133,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Headset",
-          image: "headset.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1145,13 +1149,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Mouse",
-          image: "mouse.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1160,14 +1165,15 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Modem",
-          image: "modem.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1175,13 +1181,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Cellphone",
-          image: "cellphone.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1189,13 +1196,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Chair",
-          image: "chair.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1203,14 +1211,15 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Keyword",
-          image: "keyword.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "open",
+        status: "Open",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1218,13 +1227,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook charger",
-          image: "notebookcharger.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "in progress",
+        status: "In progress",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1233,13 +1243,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Cellphone charger",
-          image: "cellphonecharger.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "in progress",
+        status: "In progress",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1248,14 +1259,15 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Port adapter",
-          image: "portadapter.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "in progress",
+        status: "In progress",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1263,13 +1275,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Other",
-          image: "other.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "in progress",
+        status: "In progress",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1277,13 +1290,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "partially solved",
+        status: "Partially solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1292,14 +1306,15 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "partially solved",
+        status: "Partially solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1308,13 +1323,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "partially solved",
+        status: "Partially solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1322,13 +1338,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1336,14 +1353,15 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1352,13 +1370,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1367,13 +1386,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "OLDEST, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1382,14 +1402,15 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: true,
+        home_office: "home",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location:
             "Dr. Luis María Drago 1413, Bahía Blanca, Buenos Aires, Argentina",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "NEWEST, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1398,13 +1419,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 1",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",
@@ -1412,13 +1434,14 @@ async function seedData() {
       },
       {
         user: userData[0]._id,
-        home_office: false,
+        home_office: "office",
         damaged_equipment: {
           name: "Notebook",
-          image: "notebook.jpg",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7Ve2fJAXbGhBIUo7yBGh4vt86vzv2CLEJw&usqp=CAU",
           location: "Oficina Buenos Aires - puesto 2",
         },
-        status: "solved",
+        status: "Solved",
         owner: userData[1]._id,
         description:
           "Lorem ipsum dolor sit amet, eum diam movet putent in. Usu ea utamur ullamcorper, his dicant suscipit phaedrum ad. Vim an modo dolores, quidam instructior qui ei.",

@@ -16,7 +16,7 @@ const signup = async (req, res) => {
     await newUser.save();
     res.sendStatus(200);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -62,10 +62,11 @@ const login = async (req, res) => {
       is_admin,
     });
 
-    // Configuración de la cookie
-    res.setHeader("Set-Cookie", [`token=${token}; HttpOnly; Secure`]);
 
     res.status(200).json({
+      token,
+      message: "is logged",
+      error: false,
       data: {
         id,
         name,
@@ -77,8 +78,6 @@ const login = async (req, res) => {
         role,
         is_admin,
       },
-      message: "is logged",
-      error: false,
     });
   } catch (err) {
     res.status(500).send(err);
@@ -98,7 +97,7 @@ const profileData = async (req, res) => {
 
     res.status(200).json(profileData);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -111,13 +110,13 @@ const lastCase = async (req, res) => {
 
     res.status(200).json(lastCase);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
 const secret = (req, res) => {
-  const { token } = req.cookies;
-  const { payload } = validateToken(token);
+const { payload } = validateToken(req.body.token);
+
   req.user = payload;
 
   res.send(payload);
@@ -159,7 +158,7 @@ const updateUser = async (req, res) => {
 
     res.status(200).send({ message: "The user was updated" });
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
@@ -214,7 +213,7 @@ const getUsers = async (req, res) => {
 
     res.status(200).json(allUsers);
   } catch (err) {
-    res.status(404).send(err);
+    res.status(500).send(err);
   }
 };
 
