@@ -62,6 +62,7 @@ const login = async (req, res) => {
       is_admin,
     });
 
+
     res.status(200).json({
       token,
       message: "is logged",
@@ -114,7 +115,8 @@ const lastCase = async (req, res) => {
 };
 
 const secret = (req, res) => {
-  const { payload } = validateToken(req.body.token);
+const { payload } = validateToken(req.body.token);
+
   req.user = payload;
 
   res.send(payload);
@@ -152,9 +154,9 @@ const updateUser = async (req, res) => {
       is_admin,
     });
 
-    res.cookie("token", newToken);
+    res.setHeader("Set-Cookie", [`token=${token}; HttpOnly; Secure`]);
 
-    res.status(200).send(newToken);
+    res.status(200).send({ message: "The user was updated" });
   } catch (err) {
     res.status(500).send(err);
   }
