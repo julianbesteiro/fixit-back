@@ -16,11 +16,7 @@ router.delete("/delete/:id", casesController.deleteCase);
 
 //user
 
-router.get(
-  "/filterGlober/:id",
-  validateCredentials,
-  casesController.filterCasesGlober
-);
+router.get("/filterGlober/:id", casesController.filterCasesGlober);
 router.get("/:id", casesController.searchIndividualCase);
 
 module.exports = router;
