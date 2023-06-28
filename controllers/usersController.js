@@ -62,10 +62,11 @@ const login = async (req, res) => {
       is_admin,
     });
 
-    // Configuración de la cookie
-    res.setHeader("Set-Cookie", [`token=${token}; HttpOnly; Secure`]);
 
     res.status(200).json({
+      token,
+      message: "is logged",
+      error: false,
       data: {
         id,
         name,
@@ -77,8 +78,6 @@ const login = async (req, res) => {
         role,
         is_admin,
       },
-      message: "is logged",
-      error: false,
     });
   } catch (err) {
     res.status(500).send(err);
@@ -116,8 +115,8 @@ const lastCase = async (req, res) => {
 };
 
 const secret = (req, res) => {
-  const { token } = req.cookies;
-  const { payload } = validateToken(token);
+const { payload } = validateToken(req.body.token);
+
   req.user = payload;
 
   res.send(payload);
