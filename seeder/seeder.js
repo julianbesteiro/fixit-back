@@ -2,13 +2,20 @@
 
 const mongoose = require("mongoose");
 const { Case, User, Office, Device } = require("../models");
+require("dotenv").config();
+const NAME = process.env.DB_NAME;
+const USER = process.env.DB_USER;
+const PASSWORD = process.env.DB_PASSWORD;
 
 async function seedData() {
   try {
-    await mongoose.connect("mongodb://localhost:27017/fixit", {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(
+      `mongodb+srv://${USER}:${PASSWORD}@cluster0.4wiuu7f.mongodb.net/${NAME}?retryWrites=true&w=majority`,
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
 
     const offices = [
       {
