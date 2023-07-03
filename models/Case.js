@@ -45,7 +45,7 @@ const caseSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
-    minlength: 50,
+    minlength: 10,
   },
 
   closest_office: {
